@@ -10,10 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+# サービス一覧表示
+Route::get('/services', 'ServiceController@index');
 
 Auth::routes();
 
