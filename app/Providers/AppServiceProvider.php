@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // httpをhttpsにして、情報を保護
+        $this->app['request']->server->set('HTTPS', 'on');
     }
 }
