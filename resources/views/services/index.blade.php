@@ -13,7 +13,7 @@
                     <!--サービス名-->
                     <h2 class='name'>{{ $service->name }}</h2>
                     <!--企業名-->
-                    <h2 class='company'>company_name</h2>
+                    <a href=''>company_name</a>
                     <!--企業ロゴ-->
                     <img class='company-logo'/>
                     <!--サービス内容-->
@@ -21,6 +21,7 @@
                 </div>
             @endforeach
         </div>
+        <!--ページネーション-->
         <div class='paginate'>
             {{ $services->links() }}
         </div>
