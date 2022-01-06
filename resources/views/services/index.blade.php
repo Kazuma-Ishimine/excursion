@@ -21,5 +21,8 @@
                 </div>
             @endforeach
         </div>
+        <div class='paginate'>
+            {{ $services->links() }}
+        </div>
     </body>
 </html>
