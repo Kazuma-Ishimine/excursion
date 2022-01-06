@@ -12,6 +12,6 @@ class ServiceController extends Controller
     // Service一覧を表示
     public function index(Service $service)
     {
-        return $service->get();
+        return view('services/index')->with(['services' => $service->getPaginateByLimitService()]);
     }
 }
