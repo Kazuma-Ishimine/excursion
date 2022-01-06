@@ -13,6 +13,7 @@
 # サービス一覧表示
 Route::get('/services', 'ServiceController@index');
 
+# 認証機能
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
