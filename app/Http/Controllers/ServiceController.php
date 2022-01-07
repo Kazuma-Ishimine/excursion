@@ -9,9 +9,14 @@ use App\Service;
 
 class ServiceController extends Controller
 {
-    // Service一覧を表示
+    // サービス一覧を表示
     public function index(Service $service)
     {
         return view('services/index')->with(['services' => $service->getPaginateByLimitService()]);
+    }
+    // サービス詳細を表示
+    public function show(Service $service)
+    {
+        return view('services/show')->with(['service' => $service]);
     }
 }

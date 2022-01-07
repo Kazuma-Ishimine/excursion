@@ -10,10 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-# サービス一覧表示
+# Servicesテーブル
+// サービス一覧画面の表示
 Route::get('/services', 'ServiceController@index');
+// サービス詳細画面の表示
+Route::get('/services/{service}', 'ServiceController@show');
 
-# 認証機能
+# Usersテーブル
+// 認証機能
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

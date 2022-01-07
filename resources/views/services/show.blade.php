@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <meta name='vieport' content='width=device-width, initial-scale=1'>
-        <title>{{ $services->name }}</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <title>{{ $service->name }}</title>
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link rel='stylesheet' href='/css/app.css'>
     </head>
