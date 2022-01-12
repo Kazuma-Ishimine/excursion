@@ -80,7 +80,7 @@
                     <textarea name='post[body]' placeholder='意見投稿'></textarea>
                 </div>
                 <!--入力内容を送信するボタン-->
-                <input type='submit' value='保存'/>
+                <input type='submit' value='投稿'/>
             </form>
         </div>
     </body>
