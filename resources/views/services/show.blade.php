@@ -58,15 +58,24 @@
         <!--投稿-->
         <div class='posts'>
             <h2>意見投稿</h2>
-            <!--投稿内容-->
+            <!--投稿内容一覧-->
             <div class='content'>
                 <!--投稿本文-->
-                <p>投稿文</p>
+                <p class="body">投稿文</p>
+                <!--リアクション-->
                 <!--いいね-->
                 <div class='good'>いいね:</div>
+                <!--投稿者名-->
+                <div class='user-name'>投稿者名</div>
+                <!--投稿者のプロフィール画像-->
+                <div class='user-image'>プロフィール画像</div>
             </div>
             <!--投稿作成-->
-            
+            <form action='/services/{{ $services->id }}' method='POST'>
+                <!--csrfトークンフィールド-->
+                @csrf
+                
+            </form>
         </div>
     </body>
 </html>
