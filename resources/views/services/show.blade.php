@@ -71,10 +71,16 @@
                 <div class='user-image'>プロフィール画像</div>
             </div>
             <!--投稿作成-->
-            <form action='/services/{{ $services->id }}' method='POST'>
+            <form action='/services/{{ $service->id }}' method='POST'>
                 <!--csrfトークンフィールド-->
                 @csrf
-                
+                <!--内容入力-->
+                <div class='create-body'>
+                    <!--内容入力用テキストエリア-->
+                    <textarea name='post[body]' placeholder='意見投稿'></textarea>
+                </div>
+                <!--入力内容を送信するボタン-->
+                <input type='submit' value='保存'/>
             </form>
         </div>
     </body>
