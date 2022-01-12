@@ -13,7 +13,7 @@
                     <!--サービス名-->
                     <h2 class='name'>{{ $service->name }}</h2>
                     <!--企業名-->
-                    <a href=''>company_name</a>
+                    <a href=''>{{ $service->company->name }}</a>
                     <!--企業ロゴ-->
                     <img class='company-logo'/>
                     <!--サービス内容-->

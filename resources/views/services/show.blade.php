@@ -16,7 +16,7 @@
             {{ $service->name }}
         </h1>
         <!--企業名-->
-        <a href="">company_name</a>
+        <a href="">{{ $service->company->name }}</a>
         
         <!--サービス詳細-->
         <div class='service-content'>
