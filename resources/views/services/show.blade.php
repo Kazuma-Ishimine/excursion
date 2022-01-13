@@ -23,8 +23,9 @@
             <h2>サービス紹介</h2>
             <!--サービス内容-->
             <p class='content'>{{ $service->body }}</p>
-            <!--業界-->
-            <h3>industry</h3>
+            <!--業界名-->
+            <h3>業界</h3>
+            <a href='/industries/{{ $service->company->industry->id }}'>{{ $service->company->industry->name }}</a>
             <!--料金体系-->
             <p class='charge'>{{ $service->charge }}</p>
         </div>

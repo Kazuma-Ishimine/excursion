@@ -10,13 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-# Servicesテーブル
+# Services
 // サービス一覧画面の表示
 Route::get('/services', 'ServiceController@index');
 // サービス詳細画面の表示
 Route::get('/services/{service}', 'ServiceController@show');
 
-# Usersテーブル
+# Industries
+// 業界毎の企業一覧画面の表示
+Route::get('/industries/{industry}', 'IndustryController@index');
+
+# Users
 // 認証機能
 Auth::routes();
 

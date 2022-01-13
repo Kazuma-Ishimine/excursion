@@ -7,25 +7,25 @@
     </head>
     <body>
         <h1>仕事で遊ぶ</h1>
-        <div class="services">
-            @foreach ($services as $service)
-                <div class='service'>
-                    <!--サービス名-->
-                    <h2 class='name'>{{ $service->name }}</h2>
+        <div class="companies">
+            @foreach ($companies as $company)
+                <div class='company-content'>
                     <!--企業名-->
-                    <a href=''>{{ $service->company->name }}</a>
+                    <a href=''>{{ $company->name }}</a>
                     <!--企業ロゴ-->
                     <img class='company-logo'/>
-                    <!--サービス内容-->
-                    <p class='body'>{{ $service->body }}</p>
                     <!--業界名-->
-                    <a href='/industries/{{ $service->company->industry->id }}'>{{ $service->company->industry->name }}</a>
+                    <a href=''>{{ $company->industry->name }}</a>
                 </div>
             @endforeach
         </div>
+        <!--サービス詳細画面へ遷移-->
+        <div class='fotter'>
+            <a href='/services'>[戻る]</a>
+        </div>
         <!--ページネーション-->
         <div class='paginate'>
-            {{ $services->links() }}
+            {{ $companies->links() }}
         </div>
     </body>
 </html>
