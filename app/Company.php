@@ -11,4 +11,10 @@ class Company extends Model
     {
         return $this->hasMany('App\Servie');
     }
+    
+    // Industryに対するリレーション
+    public function industry()
+    {
+        return $this->belongsTo('App\Industry');
+    }
 }
