@@ -30,4 +30,10 @@ class Service extends Model
     {
         return $this->hasMany('App\Conflict');
     }
+    
+    // Termに対するリレーション
+    public function terms()
+    {
+        return $this->hasMany('App\Term');
+    }
 }
