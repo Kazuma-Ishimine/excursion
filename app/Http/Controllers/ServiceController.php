@@ -14,6 +14,7 @@ class ServiceController extends Controller
     {
         return view('services/index')->with(['services' => $service->getPaginateByLimitService()]);
     }
+    
     // サービス詳細を表示
     public function show(Service $service)
     {
