@@ -17,4 +17,10 @@ class Service extends Model
     {
         return $this->belongsTo('App\Company');
     }
+    
+    // Conflictに対するリレーション
+    public function conflicts()
+    {
+        return $this->hasMany('App\Conflict');
+    }
 }
