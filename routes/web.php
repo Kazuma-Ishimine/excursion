@@ -20,6 +20,10 @@ Route::get('/services/{service}', 'ServiceController@show');
 // 業界毎の企業一覧画面の表示
 Route::get('/industries/{industry}', 'IndustryController@index');
 
+# Comments
+// 意見投稿一覧の表示
+Route::get('/comments', 'CommentController@index');
+
 # Users
 // 認証機能
 Auth::routes();
