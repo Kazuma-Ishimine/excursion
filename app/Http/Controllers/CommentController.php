@@ -14,4 +14,10 @@ class CommentController extends Controller
     {
         return view('comments/index')->with(['comments' => $comment->getPaginateByComment()]);
     }
+    
+    // createメソッド(意見投稿作成)
+    public function create()
+    {
+        return view('comments/create');
+    }
 }

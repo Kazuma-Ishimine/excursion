@@ -23,6 +23,8 @@ Route::get('/industries/{industry}', 'IndustryController@index');
 # Comments
 // 意見投稿一覧の表示
 Route::get('/comments', 'CommentController@index');
+// 意見投稿作成
+Route::get('/comments/create', 'CommentController@create');
 
 # Users
 // 認証機能
