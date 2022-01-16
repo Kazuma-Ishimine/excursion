@@ -27,6 +27,10 @@ Route::get('/comments', 'CommentController@index');
 Route::get('/comments/create', 'CommentController@create');
 // 意見投稿保存
 Route::post('/comments', 'CommentController@store');
+// 意見投稿編集
+Route::get('/comments/{comment}/edit', 'CommentController@edit');
+// 意見投稿編集保存
+Route::put('/comments', 'CommentController@update');
 
 # Users
 // 認証機能
