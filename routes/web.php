@@ -25,6 +25,8 @@ Route::get('/industries/{industry}', 'IndustryController@index');
 Route::get('/comments', 'CommentController@index');
 // 意見投稿作成
 Route::get('/comments/create', 'CommentController@create');
+// 意見投稿保存
+Route::post('/comments', 'CommentController@store');
 
 # Users
 // 認証機能

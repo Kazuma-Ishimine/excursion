@@ -20,4 +20,13 @@ class CommentController extends Controller
     {
         return view('comments/create');
     }
+    
+    // storeメソッド(意見投稿保存)
+    public function store(Request $request, Comment $comment)
+    {
+        $input = $request['post'];
+        // dd($input);
+        $comment->fill($input)->save();
+        return redirect('/comments');
+    }
 }
