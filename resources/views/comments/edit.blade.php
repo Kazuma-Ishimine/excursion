@@ -31,7 +31,26 @@
                 <input type='submit' value='編集' />
             </form>
         </div>
+        <!--削除領域-->
+        <form action='/comments' id='form_delete' method='POST'>
+            <!--csrf-->
+            {{ csrf_field() }}
+            <!--deleteリクエスト-->
+            {{ method_field('delete') }}
+            <!--削除ボタン-->
+            <input type='submit' style='display:none' />
+            <p class='delete-button'>[<span onclick='return deleteComment(this);'>投稿削除</span>]</p>
+        </form>
         <!--意見投稿の編集を辞める-->
         <div class='reject'>[<a href='/comments'>辞める</a>]</div>
+        <!--JavaScriptの記述-->
+        <script>
+            function deleteComment(e){
+                'use strict';
+                if (confirm('削除すると復元できません。\n 本当に削除しますか?')) {
+                    document.getElementById('form_delete').submit();
+                }
+            }
+        </script>
     </body>
 </html>

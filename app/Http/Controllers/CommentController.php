@@ -45,4 +45,11 @@ class CommentController extends Controller
         $comment->fill($input_comment)->save();
         return redirect('/comments');
     }
+    
+    // deleteメソッド(意見投稿削除)
+    public function delete(Comment $comment)
+    {
+        $comment->delete();
+        return redirect('/comments');
+    }
 }

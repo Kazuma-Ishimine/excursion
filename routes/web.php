@@ -11,13 +11,13 @@
 |
 */
 # Services
-// サービス一覧画面の表示
+// サービス一覧の表示
 Route::get('/services', 'ServiceController@index');
-// サービス詳細画面の表示
+// サービス詳細の表示
 Route::get('/services/{service}', 'ServiceController@show');
 
 # Industries
-// 業界毎の企業一覧画面の表示
+// 業界毎の企業一覧の表示
 Route::get('/industries/{industry}', 'IndustryController@index');
 
 # Comments
@@ -31,6 +31,8 @@ Route::post('/comments', 'CommentController@store');
 Route::get('/comments/{comment}/edit', 'CommentController@edit');
 // 意見投稿編集保存
 Route::put('/comments', 'CommentController@update');
+// 意見投稿削除
+Route::delete('/comments', 'CommentController@delete');
 
 # Users
 // 認証機能
