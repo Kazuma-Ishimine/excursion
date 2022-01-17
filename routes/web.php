@@ -22,11 +22,11 @@ Route::get('/industries/{industry}', 'IndustryController@index');
 
 # Comments
 // 意見投稿一覧の表示
-Route::get('/comments', 'CommentController@index');
+Route::get('/comments', 'CreateController@index');
 // 意見投稿作成
-Route::get('/comments/create', 'CommentController@create');
+Route::get('/comments/create', 'CreateController@create');
 // 意見投稿保存
-Route::post('/comments', 'CommentController@store');
+Route::post('/comments', 'CreateController@store');
 // 意見投稿編集
 Route::get('/comments/{comment}/edit', 'CommentController@edit');
 // 意見投稿編集保存

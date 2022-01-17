@@ -7,6 +7,7 @@
     </head>
     <body>
         <h1>仕事で遊ぶ</h1>
+        
         <!--編集フォーム-->
         <div class='comments'>
             <form action='/comments' method='POST'>
@@ -31,6 +32,7 @@
                 <input type='submit' value='編集' />
             </form>
         </div>
+        
         <!--削除領域-->
         <form action='/comments' id='form_delete' method='POST'>
             <!--csrf-->
@@ -41,8 +43,10 @@
             <input type='submit' style='display:none' />
             <p class='delete-button'>[<span onclick='return deleteComment(this);'>投稿削除</span>]</p>
         </form>
+        
         <!--意見投稿の編集を辞める-->
         <div class='reject'>[<a href='/comments'>辞める</a>]</div>
+        
         <!--JavaScriptの記述-->
         <script>
             function deleteComment(e){
@@ -52,5 +56,6 @@
                 }
             }
         </script>
+        
     </body>
 </html>
