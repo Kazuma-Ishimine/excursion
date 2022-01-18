@@ -6,67 +6,71 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
-        <h1>仕事で遊ぶ</h1>
+        <!--親ビューを継承したヘッダー-->
+        @extends('layouts.app')
         
-        <!--意見投稿一覧を表示-->
-        <div class='comments'>
-            @foreach($comments as $comment)
-                <div class='comment'>
-                    <p class='body'>{{ $comment->body }}(本文)</p>
-                    <p class='update-day'>{{ $comment->updated_at }}(更新日)</p>
-                    <h3 class='review'>{{ $comment->review }}(いいねの数)</h3>
-                </div>
-                <!--編集画面への遷移-->
-                <div class='comment-edit'>[<a href='/comments/{{ $comment->id }}/edit'>編集</a>]</div>
-                <!--投稿削除-->
-                <form action='/comments' id='form_{{ $comment->id }}' method='POST' style='display:inline'>
-                    @csrf
-                    @method('DELETE')
-                    <div class='delete-button'>
-                        <button type='button' id='{{ $comment->id }}'>意見投稿削除</button>
+        <!--子ビュー固有のパーツ-->
+        @section('content')
+            <!--意見投稿一覧を表示-->
+            <div class='comments'>
+                @foreach($comments as $comment)
+                    <div class='comment'>
+                        <p class='body'>{{ $comment->body }}(本文)</p>
+                        <p class='update-day'>{{ $comment->updated_at }}(更新日)</p>
+                        <h3 class='review'>{{ $comment->review }}(いいねの数)</h3>
                     </div>
-                </form>
-            @endforeach
-        </div>
-        
-        <!--ページネーションのリンク-->
-        <div class='paginate'>
-            {{ $comments->links() }}
-        </div>
-        
-        <!--意見投稿の作成-->
-        <!--入力フォーム-->
-        <form action='/comments' method="POST">
-            <!--csrfトークンフィールド-->
-            @csrf
-            <!--内容入力-->
-            <div class='body'>
-                <h2>意見投稿内容</h2>
-                <!--内容入力用テキストエリア-->
-                <textarea name='post[body]' placeholder='意見投稿'>{{ old('post.body') }}</textarea>
-                <!--
-                入力エラー時、CommentRequestクラスで設定された
-                入力エラーメッセージを対象項目の下にそれぞれ表示
-                -->
-                <p class='body-error' style='color:red'>{{ $errors->first('post.body') }}</p>
+                    <!--編集画面への遷移-->
+                    <div class='comment-edit'>[<a href='/comments/{{ $comment->id }}/edit'>編集</a>]</div>
+                    <!--投稿削除-->
+                    <form action='/comments' id='form_{{ $comment->id }}' method='POST' style='display:inline'>
+                        @csrf
+                        @method('DELETE')
+                        <div class='delete-button'>
+                            <button type='button' id='{{ $comment->id }}'>意見投稿削除</button>
+                        </div>
+                    </form>
+                @endforeach
             </div>
-            <!--いいねの数入力-->
-            <div class='review'>
-                <h2>いいねの数(仮)</h2>
-                <!--いいねの数_仮_入力-->
-                <input type='number' name='post[review]' value='{{ old('post.review') }}' />
-                <!--
-                入力エラー時、CommentRequestクラスで設定された
-                入力エラーメッセージを対象項目の下にそれぞれ表示
-                -->
-                <p class='review-error' style='color:red'>{{  $errors->first('post.review') }}</p>
+            
+            <!--ページネーションのリンク-->
+            <div class='paginate'>
+                {{ $comments->links() }}
             </div>
-            <!--入力内容を送信するボタン-->
-            <input type='submit' value='投稿' />
-        </form>
-        
-        <!--意見投稿を辞める-->
-        <div class='reject'>[<a href='/comments'>辞める</a>]</div>
+            
+            <!--意見投稿の作成-->
+            <!--入力フォーム-->
+            <form action='/comments' method="POST">
+                <!--csrfトークンフィールド-->
+                @csrf
+                <!--内容入力-->
+                <div class='body'>
+                    <h2>意見投稿内容</h2>
+                    <!--内容入力用テキストエリア-->
+                    <textarea name='post[body]' placeholder='意見投稿'>{{ old('post.body') }}</textarea>
+                    <!--
+                    入力エラー時、CommentRequestクラスで設定された
+                    入力エラーメッセージを対象項目の下にそれぞれ表示
+                    -->
+                    <p class='body-error' style='color:red'>{{ $errors->first('post.body') }}</p>
+                </div>
+                <!--いいねの数入力-->
+                <div class='review'>
+                    <h2>いいねの数(仮)</h2>
+                    <!--いいねの数_仮_入力-->
+                    <input type='number' name='post[review]' value='{{ old('post.review') }}' />
+                    <!--
+                    入力エラー時、CommentRequestクラスで設定された
+                    入力エラーメッセージを対象項目の下にそれぞれ表示
+                    -->
+                    <p class='review-error' style='color:red'>{{  $errors->first('post.review') }}</p>
+                </div>
+                <!--入力内容を送信するボタン-->
+                <input type='submit' value='投稿' />
+            </form>
+            
+            <!--意見投稿を辞める-->
+            <div class='reject'>[<a href='/comments'>辞める</a>]</div>
+        @endsection
         
         <!--JavaScriptの処理-->
         <script>
