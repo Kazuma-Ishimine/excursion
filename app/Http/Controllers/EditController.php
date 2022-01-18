@@ -28,6 +28,7 @@ class EditController extends Controller
     public function update(CommentRequest $request, Comment $comment)
     {
         $inupt_comment = $request['post'];
+        $input_comment += ['user_id' => $request->user()->id];
         $comment->fill($input_comment)->save();
         return redirect('/comments');
     }

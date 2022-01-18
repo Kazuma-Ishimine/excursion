@@ -29,6 +29,8 @@
                             <button type='button' id='{{ $comment->id }}'>意見投稿削除</button>
                         </div>
                     </form>
+                    <!--投稿者の名前情報を表示-->
+                    <small>{{ $comment->user->name }}</small>
                 @endforeach
             </div>
             

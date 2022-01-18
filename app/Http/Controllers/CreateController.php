@@ -28,6 +28,7 @@ class CreateController extends Controller
     public function store(CommentRequest $request, Comment $comment)
     {
         $input = $request['post'];
+        $input += ['user_id' => $request->user()->id];
         $comment->fill($input)->save();
         return redirect('/comments');
     }

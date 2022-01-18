@@ -20,9 +20,9 @@ class Comment extends Model
         ];
         
     // 意見投稿一覧画面(paginateで件数制限)
-    public function getPaginateByComment(int $limit_count = 10)
+    public function getPaginateByComment(int $limit_count = 5)
     {
-        return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $this::with(['user'])->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
     
     // Userに対するリレーション
