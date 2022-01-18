@@ -13,6 +13,12 @@
         
         <!--子ビュー固有のパーツ-->
         @section('content')
+            <!--ユーザー名-->
+            <div class='user-name'>{{ Auth::user()->name }}</div>
+            
+            <!--一覧画面に戻る-->
+            <div class='return-index'>[<a href='/services'>一覧へ戻る</a>]</div>
+                
             <!--企業とサービス-->
             <!--企業名-->
             <a href="">{{ $service->company->name }}(企業名)</a>

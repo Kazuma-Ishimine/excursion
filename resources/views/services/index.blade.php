@@ -6,9 +6,15 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
+        <!--親ビューから継承するヘッダー-->
         @extends('layouts.app')
+        
+        <!--子ビュー固有のパーツ-->
         @section('content')
-            <h1>仕事で遊ぶ</h1>
+            <!--ユーザー名-->
+            <div class='user-name'>{{ Auth::user()->name }}</div>
+            
+            <!--サービス一覧-->
             <div class="services">
                 @foreach ($services as $service)
                     <div class='service'>
@@ -25,10 +31,12 @@
                     </div>
                 @endforeach
             </div>
+            
             <!--ページネーション-->
             <div class='paginate'>
                 {{ $services->links() }}
             </div>
         @endsection
+        
     </body>
 </html>
