@@ -25,7 +25,7 @@
             <div class="container">
                 <!--<a class="navbar-brand" href="{{ url('/') }}">-->
                     <!--ヘッダーでLaravelと表示されているところ-->
-                <!--    {{ config('app.name', 'Laravel') }}-->
+                <!--    { config('app.name', 'Laravel') }}-->
                 <!--</a>-->
                 
                 <!--アプリケーション名-->

@@ -11,10 +11,12 @@
 |
 */
 # Services
-// サービス一覧の表示
-Route::get('/services', 'ServiceController@index');
-// サービス詳細の表示
-Route::get('/services/{service}', 'ServiceController@show');
+Route::group(['middleware' => 'auth'], function(){
+    // サービス一覧の表示
+    Route::get('/services', 'ServiceController@index');
+    // サービス詳細の表示
+    Route::get('/services/{service}', 'ServiceController@show');
+});
 
 # Industries
 // 業界毎の企業一覧の表示
