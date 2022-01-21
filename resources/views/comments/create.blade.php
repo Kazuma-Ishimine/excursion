@@ -29,6 +29,12 @@
                             <button type='button' id='{{ $comment->id }}'>意見投稿削除</button>
                         </div>
                     </form>
+                    <!--投稿者のプロフィール画像を表示-->
+                    @if($user->image == null)
+                        <img src='/storage/noimage.png'>
+                    @else
+                        <img src='/storage/{{ $user->image }}'>
+                    @endif
                     <!--投稿者の名前情報を表示-->
                     <small>{{ $comment->user->name }}</small>
                 @endforeach

@@ -39,7 +39,16 @@ Route::group(['middleware' => 'auth'], function(){
 
 
 # Users
-// 認証機能
+// 認証機能に関するルーティング追加
 Auth::routes();
 
+// ログインページ
 Route::get('/home', 'HomeController@index')->name('home');
+
+// プロフィール画面
+Route::get('/users', 'UserController@update');
+
+
+
+
+
