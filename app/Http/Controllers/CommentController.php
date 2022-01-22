@@ -18,38 +18,34 @@ class CommentController extends Controller
         return view('comments/index')->with(['comments' => $comment->getPaginateByComment()]);
     }
     
-    // createメソッド(意見投稿作成)
-    public function create()
-    {
-        return view('comments/create');
+    // fetchメソッド
+    public function fetch(Request $request) {
+        $decodedFetchedTweetIdList = json_decode($request->fetchedTweetIdList, true);
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            return response()->json(['errorMessage' => json_last_error_msg(), 500]);
+            $comments = $this->commentsService->extractShowComments($decodedFetchedTweetIdList, $request->page);
+            return response()->json(['comments' => $comments], 200);
+        }
     }
     
-    // storeメソッド(意見投稿保存)
-    public function store(CommentRequest $request, Comment $comment)
+    // extractShowCommentsメソッド
+    public function extractShowComments($fetchedTweetIdList, $page)
     {
-        $input = $request['post'];
-        $comment->fill($input)->save();
-        return redirect('/comments');
-    }
-    
-    // editメソッド(意見投稿編集)
-    public function edit(Comment $comment)
-    {
-        return view('comments/edit')->with(['comment' => $comment]);
-    }
-    
-    // updateメソッド(意見投稿編集保存)
-    public function update(CommentRequest $request, Comment $comment)
-    {
-        $input_comment = $request['post'];
-        $comment->fill($input_comment)->save();
-        return redirect('/comments');
-    }
-    
-    // deleteメソッド(意見投稿削除)
-    public function delete(Comment $comment)
-    {
-        $comment->delete();
-        return redirect('/comments');
+        $limit = 10;
+        $offset = $page * $limit;
+        $comments = Comment::orderBy('created_at', 'desc')->offset($offset)->take($limit)->get();
+        if (is_null($comments)) {
+            return [];
+        }
+        if (is_null($fetchedTweetIdList)) {
+            return $comments;
+        }
+        $showableComments = [];
+        foreach ($comments as $comment) {
+            if (!in_array($tweet->id, $fetchedTweetIdList)) {
+                $showableComments[] = $comment;
+            }
+        }
+        return $showableComments;
     }
 }

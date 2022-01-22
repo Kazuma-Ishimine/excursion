@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>意見投稿一覧と作成(仮)</title>
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link rel='stylesheet' href='{{ asset('css/comment.css') }}'>
     </head>
     <body>
         <!--親ビューを継承したヘッダー-->
@@ -30,10 +31,10 @@
                         </div>
                     </form>
                     <!--投稿者のプロフィール画像を表示-->
-                    @if($user->image == null)
+                    @if ($comment->user->image == null)
                         <img src='/storage/noimage.png'>
                     @else
-                        <img src='/storage/{{ $user->image }}'>
+                        <img src='/storage/{{ $comment->user->image }}'>
                     @endif
                     <!--投稿者の名前情報を表示-->
                     <small>{{ $comment->user->name }}</small>

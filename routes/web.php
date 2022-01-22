@@ -37,7 +37,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::delete('/comments', 'CommentController@delete');
 });
 
-
+# Comments(無限スクロール)
+Route::get('comment', 'CommentController@index');
+Route::get('/comment', 'CommentController@fetch');
+    
 # Users
 // 認証機能に関するルーティング追加
 Auth::routes();
@@ -47,6 +50,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // プロフィール画面
 Route::get('/users', 'UserController@update');
+
+# Googleログイン機能
+// Google認証ページへユーザーをリダイレクト
+Route::get('login/google', 'GoogleLoginController@redirectToGoogle');
+// Googleからユーザー情報を取得
+Route::get('login/google/callback', 'GoogleLoginController@handleGoogleCallback');
 
 
 
