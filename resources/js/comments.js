@@ -1,3 +1,7 @@
+// 定義
+const Vue = require('vue');
+const axios = require('axios');
+const loaded = require('loaded');
 // ライブラリの読み込み
 import InfiniteLoading from 'vue-infinite-loading';
 // コンポーネント化
@@ -38,7 +42,7 @@ new Vue({
         },
         
         fetchedTweetIdList() {
-            let fetchTweetIdList = [];
+            let fetchedTweetIdList = [];
             for (let i = 0; i < this.comments.length; i++) {
                 fetchedTweetIdList.push(this.comments[i].id);
             }

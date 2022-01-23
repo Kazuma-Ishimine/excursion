@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth;
-use App\User; # User
-use Socialite; # Socialite
+use App\User; // User
+use Socialite; // Socialite
 
 
 class GoogleLoginController extends Controller
@@ -29,7 +29,7 @@ class GoogleLoginController extends Controller
             $user = $this->createUserByGoogle($google_user);
         }
         // ログイン処理
-        Auth::login($user, true);
+        \Auth::login($user, true);
         return redirect('/services');
     }
     
@@ -40,7 +40,7 @@ class GoogleLoginController extends Controller
             'name' => $google_user->name,
             'email' => $google_user->email,
             // パスワードの初期値をuniqid()で生成して、ハッシュ化
-            'password' => Hash::make(uniqid()),
+            'password' => \Hash::make(uniqid()),
             ]);
         return $user;
     }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-# Serviceモデルクラスの作成
+# Serviceモデルクラスのuse宣言
 use App\Service;
 
 class ServiceController extends Controller
@@ -15,9 +15,4 @@ class ServiceController extends Controller
         return view('services/index')->with(['services' => $service->getPaginateByLimitService()]);
     }
     
-    // サービス詳細を表示
-    public function show(Service $service)
-    {
-        return view('services/show')->with(['service' => $service]);
-    }
 }

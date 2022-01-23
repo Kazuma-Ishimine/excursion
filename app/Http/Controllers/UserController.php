@@ -17,13 +17,13 @@ class UserController extends Controller
     {
         // プロフィール画像の取得、バリデーション無し
         $profile_image = $request['post'];
+        dd($$request);
         // バケットの'myportfolioimage'ファルダにアップロード
         $file_path = Storage::disk('s3')->put('/myportfolioimage/', $profile_image,'public');
-        dd($file_path);
         // アップロードした画像のフルパスを取得
         $profile_image = Storage::disk('s3')->url($file_path);
         // 上書きして保存
-        $user->fill($profile_image)->save();
+        $user->save();
         return view('user/show');
     }
 }
