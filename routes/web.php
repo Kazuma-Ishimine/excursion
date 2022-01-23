@@ -49,7 +49,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // プロフィール画面
-Route::get('/users', 'UserController@update');
+Route::get('/user', 'UserController@update');
 
 # Googleログイン機能
 // Google認証ページへユーザーをリダイレクト
