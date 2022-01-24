@@ -35,6 +35,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::put('/comments', 'CommentController@update');
     // 意見投稿削除
     Route::delete('/comments', 'CommentController@delete');
+    
+    # Likes
+    Route::get('/comments/likes/{like}', 'CommentController@like');
+    Route::get('/comments/unlikes/{like}', 'CommentController@unlike');
 });
 
 # Comments(無限スクロール)

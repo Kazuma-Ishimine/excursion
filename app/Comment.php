@@ -17,7 +17,7 @@ class Comment extends Model
         'body',
         'review',
         'user_id'
-        ];
+    ];
         
     // 意見投稿一覧画面(paginateで件数制限)
     public function getPaginateByComment(int $limit_count = 5)
@@ -29,5 +29,11 @@ class Comment extends Model
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+    
+    // Likeに対するリレーション
+    public function likes()
+    {
+        return $this->hasMany('App\Like');
     }
 }
