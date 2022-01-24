@@ -32,9 +32,9 @@
                     </form>
                     <!--投稿者のプロフィール画像を表示-->
                     @if ($comment->user->image == null)
-                        <img src='/storage/no-image.png' />
+                        <img src='/storage/s3/no-image.png' /></br>
                     @else
-                        <img src='/storage/{{ $comment->user->image }}' />
+                        <img src='/storage/s3/{{ $comment->user->image }}' /></br>
                     @endif
                     <!--投稿者の名前情報を表示-->
                     <small>{{ $comment->user->name }}</small>

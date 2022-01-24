@@ -28,7 +28,7 @@
                 @else
                     <img src='{{ Auth::user()->image }}' width='100' height='100' />
                 @endif
-                </div>
+            </div>
         @endsection
     </body>
 </html>
