@@ -42,8 +42,10 @@ Route::group(['middleware' => 'auth'], function(){
     
     // プロフィール詳細画面
     Route::get('/user', 'UserController@show');
+    // プロフィール編集画面
+    Route::get('/user/{user}/edit', 'UserController@edit');
     // プロフィール編集保存
-    Route::get('/user/edit', 'UserController@update');
+    Route::put('/user', 'UserController@update');
     
 });
 

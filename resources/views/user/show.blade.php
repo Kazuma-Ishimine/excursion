@@ -13,6 +13,7 @@
         
         <!--子ビュー固有のパーツ-->
         @section('content')
+        <h1 class='titile'>ユーザー情報</h1>
             <!--ユーザー名-->
             <h3>ユーザー名</h3>
             <div class='user-name'>{{ Auth::user()->name }}</div>
@@ -23,13 +24,14 @@
             <div class='profile-img'>
                 <h3>プロフィール画像</h3>
                 <!--プロフィール画像の表示-->
-                @if($user->image === null)
-                    <img src='/storage/no-image.png' width='100' height='100' />
+                @if(Auth::user()->image === null)
+                    <img src='s3/no-image.png' width='100' height='100' />
                 @else
                     <img src='{{ Auth::user()->image }}' width='100' height='100' />
                 @endif
             </div>
             <!--編集画面への遷移-->
+             <div class='back'>[<a href='/user/{{ Auth::user()->id }}/edit'>プロフィール編集</a>]</div>
             <!--サービス詳細画面への遷移 -->
         @endsection
     </body>
