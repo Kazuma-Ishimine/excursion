@@ -39,6 +39,12 @@ Route::group(['middleware' => 'auth'], function(){
     # Likes
     Route::get('/comments/likes/{like}', 'CommentController@like');
     Route::get('/comments/unlikes/{like}', 'CommentController@unlike');
+    
+    // プロフィール詳細画面
+    Route::get('/user', 'UserController@show');
+    // プロフィール編集保存
+    Route::get('/user/edit', 'UserController@update');
+    
 });
 
 # Comments(無限スクロール)
@@ -51,9 +57,6 @@ Auth::routes();
 
 // ログインページ
 Route::get('/home', 'HomeController@index')->name('home');
-
-// プロフィール画面
-Route::get('/user', 'UserController@update');
 
 # Googleログイン機能
 // Google認証ページへユーザーをリダイレクト

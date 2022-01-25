@@ -18,7 +18,7 @@
                 <!--ユーザー名-->
                 <div class='user-name'>{{ Auth::user->name }}</div>
                 <!--メールアドレス-->
-                <div class='user-mail'>{{ Auth::user->mail }}</div>
+                <div class='user-mail'>{{ Auth::user->email }}</div>
                 <!--プロフィール画像-->
                 <div class='profile-img'>
                     <!--プロフィール画像の編集-->

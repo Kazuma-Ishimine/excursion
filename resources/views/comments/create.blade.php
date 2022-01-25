@@ -21,13 +21,13 @@
                         <p class='update-day'>{{ $comment->updated_at }}(更新日)</p>
                     </div>
                     <!--いいね-->
-                    <div class='likes'>
-                        @if($comment->is_liked_by_auth_user())
-                            <a href='{{ }}' class='bth bth-success btn-sm'>いいね<span class='badge'>{{ $comment->likes->count() }}</span></a>
-                        @else
-                            <a href='' class='bth bth-success btn-sm'>いいね<span class='badge'>{{ $comment->likes->count() }}</span></a>
-                        @endif
-                    </div>
+                    <!--<div class='likes'>-->
+                    <!--    if$comment->is_liked_by_auth_user())-->
+                    <!--        <a href='' class='bth bth-success btn-sm'>いいね<span class='badge'>{ $comment->likes->count() }}</span></a>-->
+                    <!--    else-->
+                    <!--        <a href='' class='bth bth-success btn-sm'>いいね<span class='badge'>{ $comment->likes->count() }}</span></a>-->
+                    <!--    endif-->
+                    <!--</div>-->
                     <!--編集画面への遷移-->
                     <div class='comment-edit'>[<a href='/comments/{{ $comment->id }}/edit'>編集</a>]</div>
                     <!--投稿削除-->

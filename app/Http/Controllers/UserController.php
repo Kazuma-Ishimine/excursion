@@ -12,12 +12,17 @@ use Storage;
 
 class UserController extends Controller
 {
+    // showメソッド(プロフィール詳細画面)
+    public function show(User $user)
+    {
+        return view('user/show')->with(['user' => $user]);
+    }
+    
     // updateメソッド(プロフィール画像編集保存)
     public function update(Request $request, User $user)
     {
         // プロフィール画像の取得、バリデーション無し
         $profile_image = $request['post'];
-        dd($$request);
         // バケットの'myportfolioimage'ファルダにアップロード
         $file_path = Storage::disk('s3')->put('/myportfolioimage/', $profile_image,'public');
         // アップロードした画像のフルパスを取得
