@@ -2,10 +2,10 @@
 
 namespace App;
 
+# use宣言
 use Illuminate\Database\Eloquent\Model;
-
-# SoftDeletesのuse宣言
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes; // SoftDeletes
+use Auth; // Auth
 
 class Comment extends Model
 {
@@ -35,5 +35,21 @@ class Comment extends Model
     public function likes()
     {
         return $this->hasMany('App\Like');
+    }
+    
+    public function is_liked_by_auth_user()
+    {
+        $id = Auth::id();
+        
+        $likers = [];
+        foreach($this->likes as $like) {
+            array_push($likers, $like->user_id);
+        }
+        
+        if (in_array($id, $likers)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

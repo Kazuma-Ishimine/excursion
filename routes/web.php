@@ -37,8 +37,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::delete('/comments', 'CommentController@delete');
     
     # Likes
-    Route::get('/comments/likes/{like}', 'CommentController@like');
-    Route::get('/comments/unlikes/{like}', 'CommentController@unlike');
+    // いいね
+    Route::get('/comments/likes/{like}', 'CreateController@like');
+    // いいね取り消し
+    Route::get('/comments/unlikes/{like}', 'CreateController@unlike');
     
     // プロフィール詳細画面
     Route::get('/user', 'UserController@show');

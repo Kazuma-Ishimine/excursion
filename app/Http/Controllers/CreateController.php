@@ -2,22 +2,15 @@
 
 namespace App\Http\Controllers;
 
+# use宣言
 use Illuminate\Http\Request;
-
-# Commentのuse宣言
-use App\Comment;
-
-# CommentRequestのuse宣言
-use App\Http\Requests\CommentRequest;
+use App\Comment; // Comment
+use App\Http\Requests\CommentRequest; // CommentRequest
+use App\Like; // Like
+use Auth; // Auth
 
 class CreateController extends Controller
 {
-    // only()の引数内のメソッドはログイン時のみ有効
-    public function __construct()
-    {
-        $this->middleware(['auth', 'verified'])->only(['like', 'unlike']);
-    }
-    
     // indexメソッド(意見投稿一覧表示)
     public function index(Comment $comment)
     {
@@ -25,10 +18,10 @@ class CreateController extends Controller
     }
     
     // likeメソッド(意見に対していいねをする)
-    public function like(Request $request)
+    public function like($id)
     {
         Like::create([
-           'comment_id' => $request->id,
+           'comment_id' => $id,
            'user_id' => Auth::id(),
         ]);
         
@@ -38,10 +31,9 @@ class CreateController extends Controller
     }
     
     // unlikeメソッド(意見のいいねを取り消す)
-    public function unlike(Request $request)
+    public function unlike($id)
     {
-        $like = Like::where('reply_id', $request->id)->where('user_id', Auth::id())->first();
-        
+        $like = Like::where('comment_id', $id)->where('user_id', Auth::id())->first();
         $like->delete();
         
         session()->flash('success', 'You Unliked the Comment.');
