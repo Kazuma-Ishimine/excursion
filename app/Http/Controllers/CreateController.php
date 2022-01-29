@@ -14,31 +14,32 @@ class CreateController extends Controller
     // indexメソッド(意見投稿一覧表示)
     public function index(Comment $comment)
     {
-        return view('comments/create')->with(['comments' => $comment->getPaginateByComment()]);
+        $comments = Comment::withCount('likes')->orderBy('id', 'desc')->paginate(10);
+        $param = [
+            'comments' => $comments,    
+        ];
+        return view('comments/create', $param);
     }
     
-    // likeメソッド(意見に対していいねをする)
-    public function like($id)
+    // likeメソッド
+    public function like(Request $request)
     {
-        Like::create([
-           'comment_id' => $id,
-           'user_id' => Auth::id(),
-        ]);
-        
-        session()->flash('success', 'You Liked the Comment.');
-        
-        return redirect()->back();
-    }
-    
-    // unlikeメソッド(意見のいいねを取り消す)
-    public function unlike($id)
-    {
-        $like = Like::where('comment_id', $id)->where('user_id', Auth::id())->first();
-        $like->delete();
-        
-        session()->flash('success', 'You Unliked the Comment.');
-        
-        return redirect()->back();
+        $user_id = Auth::user()->id;
+        $comment_id = $request->comment_id;
+        $already_liked = Like::where('user_id', $user_id)->where('comment_id', $comment_id)->first();
+        if (!$already_liked) {
+            $like = new Like;
+            $like->comment_id = $comment_id;
+            $like->user_id = $user_id;
+            $like->save();
+        } else {
+            Like::where('comment_id', $comment_id)->where('user_id', $user_id)->delete();
+        }
+        $comment_likes_count = Comment::withCount('likes')->findOrFail($comment_id)->likes_count;
+        $param = [
+            'comment_likes_count' => $comment_likes_count,
+        ];
+        return response()->json($param);
     }
     
     // createメソッド(意見投稿作成)

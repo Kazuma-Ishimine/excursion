@@ -2,3 +2,8 @@ img{
     width: 100px;
     height: 100px;
 }
+
+/*いいねマークにlikedクラスがついたときのスタイルを設定*/
+.liked {
+    color: pink;
+}

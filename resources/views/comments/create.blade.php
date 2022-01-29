@@ -2,9 +2,12 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
+        <!--後で調べる-->
+        <meta name='csrf-token' content='{{ csrf_token() }}'>
         <title>意見投稿一覧と作成(仮)</title>
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link rel='stylesheet' href='{{ asset('css/comment.css') }}'>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     </head>
     <body>
         <!--親ビューを継承したヘッダー-->
@@ -21,14 +24,20 @@
                         <p class='update-day'>{{ $comment->updated_at }}(更新日)</p>
                     </div>
                     
-                    <!--いいね-->
-                    <div class='likes'>
-                        @if ($comment->is_liked_by_auth_user())
-                            <a href='/comments/unlikes/{{ $comment->id }}' class='bth bth-success btn-sm'>いいね<span class='badge'>{{ $comment->likes->count() }}</span></a>
-                        @else
-                            <a href='/comments/likes/{{ $comment->id }}' class='bth bth-success btn-sm'>いいね<span class='badge'>{{ $comment->likes->count() }}</span></a>
-                        @endif
-                    </div>
+                    <!--いいね機能-->
+                    @if (!$comment->isLikedBy())
+                        <!--いいねを取り消す-->
+                        <span class='likes'>
+                            <i class='fas fa-music like-toggle' data-comment-id='{{ $comment->id }}'></i>
+                            <span class='like-counter'>{{ $comment->likes_count }}</span>
+                        </span>
+                    @else
+                        <!--いいねをつける-->
+                        <span class='likes'>
+                            <i class='fas fa-music heart like-toggle liked' data-comment-id='{{ $comment->id }}'></i>
+                            <span class='like-counter'>{{ $comment->likes_count }}</span>
+                        </span>
+                    @endif
                     
                     <!--編集画面への遷移-->
                     <div class='comment-edit'>[<a href='/comments/{{ $comment->id }}/edit'>編集</a>]</div>
@@ -72,17 +81,6 @@
                     -->
                     <p class='body-error' style='color:red'>{{ $errors->first('post.body') }}</p>
                 </div>
-                <!--いいねの数入力-->
-                <div class='review'>
-                    <h2>いいねの数(仮)</h2>
-                    <!--いいねの数_仮_入力-->
-                    <input type='number' name='post[review]' value='{{ old('post.review') }}' />
-                    <!--
-                    入力エラー時、CommentRequestクラスで設定された
-                    入力エラーメッセージを対象項目の下にそれぞれ表示
-                    -->
-                    <p class='review-error' style='color:red'>{{  $errors->first('post.review') }}</p>
-                </div>
                 <!--入力内容を送信するボタン-->
                 <input type='submit' value='投稿' />
             </form>
@@ -91,20 +89,7 @@
             <div class='reject'>[<a href='/comments'>辞める</a>]</div>
         @endsection
         
-        <!--JavaScriptの処理-->
-        <script>
-            const delete_buttons = document.getElementsByClassName('delete_button');
-            Array.prototype.forEach.call(delete_buttons,delete_button=>
-                delete_button.addEventListener('click', function(e) {
-                    const form_id = 'form_' + e.target.id;
-                    var dialog_bool = window.confirm('削除しますか?');
-                    if (dialog_bool === true) {
-                        document.getElementById(form_id).submit();
-                    } else {
-                        return false;
-                    }
-                }));
-        </script>
-        
+        <!--JavaScriptファイル-->
+        <script src='{{ asset('js/comment.js' }}'></script>
     </body>
 </html>

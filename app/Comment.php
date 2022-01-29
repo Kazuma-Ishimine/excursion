@@ -15,8 +15,7 @@ class Comment extends Model
     # $fillableプロパティ
     protected $fillable =[
         'body',
-        'review',
-        'user_id'
+        'user_id',
     ];
         
     // 意見投稿一覧画面(paginateで件数制限)
@@ -37,19 +36,8 @@ class Comment extends Model
         return $this->hasMany('App\Like');
     }
     
-    public function is_liked_by_auth_user()
-    {
-        $id = Auth::id();
-        
-        $likers = [];
-        foreach($this->likes as $like) {
-            array_push($likers, $like->user_id);
-        }
-        
-        if (in_array($id, $likers)) {
-            return true;
-        } else {
-            return false;
-        }
+    // isLikedByメソッド(いいねされているか判定)
+    public function isLikedBy(): bool {
+        return Like::where('user_id', Auth::user()->id)->where('comment_id', $this->id)->first() !== null;
     }
 }
