@@ -29,7 +29,6 @@ class UserController extends Controller
     {
         // 情報を取得
         $input = $request['post'];
-        // dd($input);
         // 画像をs3に保存
         if ($request->file('image')) {
             // プロフィール画像をprofile_imageとする

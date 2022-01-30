@@ -47,11 +47,10 @@ Route::group(['middleware' => 'auth'], function(){
     // プロフィール編集保存
     Route::put('/user/{user}', 'UserController@update');
     
+    # Comments(無限スクロール)
+    Route::get('/comment', 'CommentController@index');
+    
 });
-
-# Comments(無限スクロール)
-Route::get('/comment', 'CommentController@index');
-// Route::get('/comment', 'CommentController@fetch');
     
 # Users
 // 認証機能に関するルーティング追加

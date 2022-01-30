@@ -27,6 +27,7 @@ class CreateController extends Controller
         $user_id = Auth::user()->id;
         $comment_id = $request->comment_id;
         $already_liked = Like::where('user_id', $user_id)->where('comment_id', $comment_id)->first();
+        
         if (!$already_liked) {
             $like = new Like;
             $like->comment_id = $comment_id;
@@ -35,10 +36,12 @@ class CreateController extends Controller
         } else {
             Like::where('comment_id', $comment_id)->where('user_id', $user_id)->delete();
         }
+        
         $comment_likes_count = Comment::withCount('likes')->findOrFail($comment_id)->likes_count;
         $param = [
             'comment_likes_count' => $comment_likes_count,
         ];
+        
         return response()->json($param);
     }
     

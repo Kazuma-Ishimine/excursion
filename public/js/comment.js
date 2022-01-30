@@ -11,6 +11,8 @@ Array.prototype.forEach.call(delete_buttons,delete_button=>
         }
 }));
 
+window.$ = window.jQuery = require('jquery');
+
 // いいね機能
 $(function() {
     var like = $('.like-toggle');
