@@ -29,16 +29,15 @@ class UserController extends Controller
     {
         // 情報を取得
         $input = $request['post'];
-        
+        // dd($input);
         // 画像をs3に保存
-        if (isset($input['image'])) {
+        if ($request->file('image')) {
             // プロフィール画像をprofile_imageとする
-            $profile_image = $request['post.image'];
+            $profile_image = $request->file('image');
             // ファイル位置を取得
-            $upload_info = Storage::disk('s3')->putFile('image', $profile_image, 'public');
+            $upload_info = Storage::disk('s3')->putFile('myportfolioimage', $profile_image, 'public');
             // ファイルのurlを取得
             $input['image'] = Storage::disk('s3')->url($upload_info);
-            dd($input['image']);
         }
         
         // 上書きと保存

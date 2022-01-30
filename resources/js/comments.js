@@ -1,7 +1,7 @@
 // 定義
-const Vue = require('vue');
-const axios = require('axios');
-const loaded = require('loaded');
+// const Vue = require('vue');
+// const axios = require('axios');
+// const loaded = require('loaded');
 // ライブラリの読み込み
 import InfiniteLoading from 'vue-infinite-loading';
 // コンポーネント化
