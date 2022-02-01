@@ -24,11 +24,11 @@ Route::group(['middleware' => 'auth'], function(){
         
     # Comments
     // 意見投稿一覧の表示
-    Route::get('/comments', 'CreateController@index');
+    Route::get('/comments', 'CommentController@index');
     // 意見投稿作成
-    Route::get('/comments/create', 'CreateController@create');
+    Route::get('/comments/create', 'CommentController@create');
     // 意見投稿保存
-    Route::post('/comments', 'CreateController@store');
+    Route::post('/comments', 'CommentController@store');
     // 意見投稿編集
     Route::get('/comments/{comment}/edit', 'CommentController@edit');
     // 意見投稿編集保存

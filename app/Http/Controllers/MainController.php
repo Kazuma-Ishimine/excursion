@@ -14,6 +14,6 @@ class MainController extends Controller
     // main.blade.phpの表示
     public function show(Service $service, Conflict $conflict, Term $terms)
     {
-        return view('home/main')->with(['service' => $service, 'conflicts' => $conflict, 'terms' => $terms]);
+        return view('main/main')->with(['service' => $service, 'conflicts' => $conflict, 'terms' => $terms]);
     }
 }

@@ -14,7 +14,7 @@ class CreateController extends Controller
     // indexメソッド(意見投稿一覧表示)
     public function index(Comment $comment)
     {
-        $comments = Comment::withCount('likes')->orderBy('id', 'desc')->paginate(10);
+        $comments = Comment::withCount('likes')->orderBy('id', 'desc');
         $param = [
             'comments' => $comments,    
         ];
