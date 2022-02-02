@@ -21,7 +21,15 @@ Route::group(['middleware' => 'auth'], function(){
     # Industries
     // 業界毎の企業一覧の表示
     Route::get('/industries/{industry}', 'IndustryController@index');
-        
+    
+    # Company
+    // 企業詳細作成
+    Route::get('/companies/create', 'CompanyController@create');
+    // 企業詳細保存
+    Route::post('/companies/{companies}', 'CompanyController@store');
+    // 企業詳細画面
+    Route::get('/companies/{companies}', 'CompanyController@show');
+    
     # Comments
     // 意見投稿一覧の表示
     Route::get('/comments', 'CommentController@index');

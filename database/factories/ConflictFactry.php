@@ -9,6 +9,8 @@ $factory->define(Conflict::class, function (Faker $faker) {
     return [
         // name
         'name' => $faker->word,
+        // image
+        'image' => $faker->ImageUrl($width=100, $height=100),
         // service_id
         'service_id' => $faker->randomDigitNotNull(10),
     ];

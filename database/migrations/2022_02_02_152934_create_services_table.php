@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIndustriesTable extends Migration
+class CreateServicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,19 @@ class CreateIndustriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('industries', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             // id
             $table->bigIncrements('id');
-            // name(業界名)
+            // name
             $table->string('name', 50);
+            // body
+            $table->string('body', 500);
+            // charge
+            $table->string('charge', 500);
+            // company_id
+            $table->bigInteger('company_id')->unsigned();
+            // deleted_at
+            $table->softDeletes();
             // created_atとupdated_at
             $table->timestamps();
         });
@@ -30,6 +38,6 @@ class CreateIndustriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('industries');
+        Schema::dropIfExists('services');
     }
 }

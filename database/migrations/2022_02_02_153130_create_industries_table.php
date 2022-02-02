@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddDeletedAtToCommentsTable extends Migration
+class CreateIndustriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,13 @@ class AddDeletedAtToCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::table('comments', function (Blueprint $table) {
+        Schema::create('industries', function (Blueprint $table) {
+            // id
+            $table->bigIncrements('id');
+            // name
+            $table->string('name', 50);
+            // created_atとupdated_at
+            $table->timestamps();
             // deleted_at
             $table->softDeletes();
         });
@@ -26,8 +32,6 @@ class AddDeletedAtToCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::table('comments', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('industries');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateServicesTable extends Migration
+class CreateTermsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,19 @@ class CreateServicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('services', function (Blueprint $table) {
+        Schema::create('terms', function (Blueprint $table) {
             // id
             $table->bigIncrements('id');
-            // Name(サービス名)
+            // name
             $table->string('name', 50);
-            // Body(サービスの内容)
-            $table->string('body', 500);
-            // Charge(料金体系)
-            $table->string('charge', 500);
+            // mean
+            $table->string('mean', 200);
+            // service_id
+            $table->bigInteger('service_id')->unsigned();
             // created_atとupdated_at
             $table->timestamps();
+            // deleted_at
+            $table->softDeletes();
         });
     }
 
@@ -34,6 +36,6 @@ class CreateServicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('services');
+        Schema::dropIfExists('terms');
     }
 }

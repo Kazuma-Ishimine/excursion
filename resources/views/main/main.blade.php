@@ -38,65 +38,29 @@
                 <!--料金体系-->
                 <p class='charge'>{{ $service->charge }}(料金体系)</p>
             </div>
-            
+            {{ $service->conflicts }}
             <!--競合他社-->
             <div class='conflicts'>
-                @foreach($conflicts as $conflict)
+                @foreach($service->conflicts as $conflict)
                     <h2>競合他社</h2>
                     <!--競合他社名-->
-                    <a href=''>{{ $conflict->services() }}(競合他社名)</a>
+                    <a href=''>{{ $conflict->name }}(競合他社名)</a>
                     <!--競合他社の企業ロゴ-->
-                    <img class='conflicts-logo'/>
+                    <img class='conflicts-logo' src='{{ $conflict->image }}' />
                 @endforeach
-                <!--ページネーション-->
-                <div class='paginate-conflicts'>
-                    {{ $conflicts->links() }}
-                </div>
             </div>
             
             <!--用語-->
             <div class='terms'>
-                @foreach($terms as $term)
+                @foreach($service->terms as $term)
                     <h2>用語解説</h2>
                     <!--用語名-->
-                    <a href=''>{{ $term->services() }}用語名</a>
+                    <a href=''>{{ $term->name }}用語名</a>
                     <!--用語の意味-->
-                    <p>用語の意味</p>
+                    <p>{{ $term->mean }}用語の意味</p>
                 @endforeach
-                <!--ページネーション-->
-                <div class='paginate-terms'>
-                    {{ $terms->links() }}
-                </div>
             </div>
             
-            <!--投稿-->
-            <div class='posts'>
-                <h2>意見投稿</h2>
-                <!--投稿内容一覧-->
-                <div class='content'>
-                    <!--投稿本文-->
-                    <p class="body">投稿文</p>
-                    <!--リアクション-->
-                    <!--いいね-->
-                    <div class='good'>いいね:</div>
-                    <!--投稿者名-->
-                    <div class='user-name'>投稿者名</div>
-                    <!--投稿者のプロフィール画像-->
-                    <div class='user-image'>プロフィール画像</div>
-                </div>
-                <!--投稿作成-->
-                <form action='/services/{{ $service->id }}' method='POST'>
-                    <!--csrfトークンフィールド-->
-                    @csrf
-                    <!--内容入力-->
-                    <div class='create-body'>
-                        <!--内容入力用テキストエリア-->
-                        <textarea name='post[body]' placeholder='意見投稿'></textarea>
-                    </div>
-                    <!--入力内容を送信するボタン-->
-                    <input type='submit' value='投稿'/>
-                </form>
-            </div>
         @endsection
         
     </body>

@@ -16,10 +16,16 @@ class CreateConflictsTable extends Migration
         Schema::create('conflicts', function (Blueprint $table) {
             // id
             $table->bigIncrements('id');
-            // name(競合他社名)
+            // name
             $table->string('name', 50);
-            // created_atとupdate_at
+            // image
+            $table->string('image', 200);
+            // service_id
+            $table->bigInteger('service_id')->unsigned();
+            // created_atとupdated_at
             $table->timestamps();
+            // deleted_at
+            $table->softDeletes();
         });
     }
 

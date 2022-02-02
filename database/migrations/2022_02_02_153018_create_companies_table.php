@@ -16,8 +16,14 @@ class CreateCompaniesTable extends Migration
         Schema::create('companies', function (Blueprint $table) {
             // id
             $table->bigIncrements('id');
-            // name(企業名)
+            // name
             $table->string('name', 50);
+            // image
+            $table->string('image', 200);
+            // industry_id
+            $table->bigInteger('industry_id')->unsigned();
+            // deleted_at
+            $table->softDeletes();
             // created_atとupdated_at
             $table->timestamps();
         });

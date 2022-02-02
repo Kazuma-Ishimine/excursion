@@ -16,12 +16,16 @@ class CreateCommentsTable extends Migration
         Schema::create('comments', function (Blueprint $table) {
             // id
             $table->bigIncrements('id');
-            // Body(コメントの内容)
-            $table->string('body', 300);
-            // Review(いいねの数)
-            $table->Integer('review');
+            // body
+            $table->string('body', 500);
+            // user_id
+            $table->bigInteger('user_id')->unsigned();
+            // service_id
+            $table->bigInteger('service_id')->unsigned();
             // created_atとupdated_at
             $table->timestamps();
+            // deleted_at
+            $table->softDeletes();
         });
     }
 

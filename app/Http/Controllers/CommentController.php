@@ -12,7 +12,7 @@ class CommentController extends Controller
     // indexメソッド(意見投稿一覧の表示)
     public function index(Comment $comment)
     {
-        $comments = Comment::withCount('likes');
+        $comments = Comment::withCount('likes')->orderBy('id', 'desc')->get();
         $param = [
             'comments' => $comments,    
         ];

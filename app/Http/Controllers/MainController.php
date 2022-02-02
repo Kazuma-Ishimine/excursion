@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 // モデルクラスのuse宣言
-use Service;
-use Conflict;
-use Term;
+use App\Service;
+use App\Conflict;
+use App\Term;
 
 class MainController extends Controller
 {

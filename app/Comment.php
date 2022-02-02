@@ -36,8 +36,14 @@ class Comment extends Model
         return $this->hasMany('App\Like');
     }
     
+    // Serviceに対するリレーション
+    // public function service()
+    // {
+    //     return $this->belongsTo('App\Service');
+    // }
+    
     // isLikedByメソッド(いいねされているか判定)
-    public function isLikedBy(): bool {
-        return Like::where('user_id', Auth::user()->id)->where('comment_id', $this->id)->first() !== null;
+    public function isLikedBy($user): bool {
+        return Like::where('user_id', $user->id)->where('comment_id', $this->id)->first() !== null;
     }
 }

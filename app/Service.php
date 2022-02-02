@@ -36,4 +36,11 @@ class Service extends Model
     {
         return $this->hasMany('App\Term');
     }
+    
+    // // Commentに対するリレーション
+    // public function comments()
+    // {
+    //     return $this->hasMany('App\Comment');
+    // }
+    
 }
