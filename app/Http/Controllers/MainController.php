@@ -6,14 +6,20 @@ use Illuminate\Http\Request;
 
 // モデルクラスのuse宣言
 use App\Service;
-use App\Conflict;
-use App\Term;
 
 class MainController extends Controller
 {
-    // main.blade.phpの表示
-    public function show(Service $service, Conflict $conflict, Term $terms)
+    // indexメソッド(サービス毎の意見投稿欄)
+    public function index(Service $service)
     {
-        return view('main/main')->with(['service' => $service, 'conflicts' => $conflict, 'terms' => $terms]);
+        return view('main/index')->with(['comments' => $service->getByService()]);
     }
+    
+    // main.blade.phpの表示
+    public function show(Service $service)
+    {
+        return view('main/main')->with(['service' => $service]);
+    }
+    
+    
 }

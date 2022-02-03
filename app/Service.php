@@ -19,6 +19,12 @@ class Service extends Model
         return $this->conflicts()->with('service')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
     
+    // サービスごとの意見投稿を取得
+    public function getByService()
+    {
+        return $this->comments()->with('comments')->orderBy('updated_at', 'DESC')->get();
+    }
+    
     // Companyに対するリレーション
     public function company()
     {
@@ -37,10 +43,10 @@ class Service extends Model
         return $this->hasMany('App\Term');
     }
     
-    // // Commentに対するリレーション
-    // public function comments()
-    // {
-    //     return $this->hasMany('App\Comment');
-    // }
+    // Commentに対するリレーション
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
     
 }

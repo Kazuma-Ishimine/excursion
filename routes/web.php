@@ -15,7 +15,7 @@ Route::group(['middleware' => 'auth'], function(){
     # Services
     // サービス一覧の表示
     Route::get('/services', 'ServiceController@index');
-    // サービス詳細の表示
+    // サービス詳細、競合他社、用語表示
     Route::get('/services/{service}', 'MainController@show');
     
     # Industries
@@ -25,14 +25,11 @@ Route::group(['middleware' => 'auth'], function(){
     # Company
     // 企業詳細作成
     Route::get('/companies/create', 'CompanyController@create');
-    // 企業詳細保存
-    Route::post('/companies/{companies}', 'CompanyController@store');
-    // 企業詳細画面
-    Route::get('/companies/{companies}', 'CompanyController@show');
     
     # Comments
-    // 意見投稿一覧の表示
+    // サービス毎の意見投稿一覧の表示
     Route::get('/comments', 'CommentController@index');
+    
     // 意見投稿作成
     Route::get('/comments/create', 'CommentController@create');
     // 意見投稿保存

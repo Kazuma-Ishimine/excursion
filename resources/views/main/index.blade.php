@@ -14,9 +14,11 @@
         
         <!--子ビュー固有のパーツ-->
         @section('content')
+            
             <!--投稿件数を表示-->
             <h2>投稿件数</h2>
             <div class='comment-number'>全{{ $comments->count() }}件</div>
+            
             <!--意見投稿一覧を表示-->
                 <h2>意見投稿</h2>
                 <div class='comments'>
@@ -26,7 +28,7 @@
                         <div class='comment'>
                             <p class='body'>{{ $comment->body }}(本文)</p>
                             <p class='update-day'>{{ $comment->updated_at }}(更新日)</p>
-                            {{ $comment->service->id }}
+                            {{ $comment->service->name }}
                         </div>
                         
                         <!--いいね機能-->

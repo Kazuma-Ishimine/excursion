@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>サービス</title>
+        <title>業界</title>
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
@@ -17,9 +17,9 @@
                         <!--企業名-->
                         <a href=''>{{ $company->name }}</a>
                         <!--企業ロゴ-->
-                        <img class='company-logo'/>
+                        <img class='company-logo' src='{{ $company->image }}' />
                         <!--業界名-->
-                        <a href=''>{{ $company->industry->name }}</a>
+                        <a href=''>{{ $company->industry->name }}(業界名)</a>
                     </div>
                 @endforeach
             </div>

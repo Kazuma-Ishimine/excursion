@@ -1,6 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/js/infinite.js": "/js/infinite.js",
-    "/js/like.js": "/js/like.js"
+    "/js/like.js": "/js/like.js",
+    "/js/logout.js": "/js/logout.js"
 }

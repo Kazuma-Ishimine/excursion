@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             CommentsTableSeeder::class,
             ConflictsTableSeeder::class,
             TermsTableSeeder::class,
-            UsersTableSeeder::class,
+            // UsersTableSeeder::class,
         ]);
     }
 }

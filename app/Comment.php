@@ -37,10 +37,10 @@ class Comment extends Model
     }
     
     // Serviceに対するリレーション
-    // public function service()
-    // {
-    //     return $this->belongsTo('App\Service');
-    // }
+    public function service()
+    {
+        return $this->belongsTo('App\Service');
+    }
     
     // isLikedByメソッド(いいねされているか判定)
     public function isLikedBy($user): bool {

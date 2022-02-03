@@ -3,18 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-# Commentのuse宣言
-use App\Comment;
+use App\Comment; // Comment
+use App\Service; // Service
 
 class CommentController extends Controller
 {
     // indexメソッド(意見投稿一覧の表示)
-    public function index(Comment $comment)
+    public function index(Request $request)
     {
-        $comments = Comment::withCount('likes')->orderBy('id', 'desc')->get();
+        $comment = Comment::withCount('likes')->orderBy('id', 'desc')->get();
         $param = [
-            'comments' => $comments,    
+            'comments' => $comment,    
         ];
         return view('comments/index', $param);
     }
@@ -52,8 +51,8 @@ class CommentController extends Controller
     // storeメソッド(意見投稿保存)
     public function store(CommentRequest $request, Comment $comment)
     {
-        $input = $request['post'];
-        $input += ['user_id' => $request->user()->id];
+        $input = $request['comment'];
+        $input += ['user_id' => $request->user()->id, 'service_id' => $request->service()->id];
         $comment->fill($input)->save();
         return redirect('/comments');
     }
@@ -68,7 +67,7 @@ class CommentController extends Controller
     public function update(CommentRequest $request, Comment $comment)
     {
         $inupt_comment = $request['post'];
-        $input_comment += ['user_id' => $request->user()->id];
+        $input_comment += ['user_id' => $request->user()->id, 'service_id' => $request->service()->id];
         $comment->fill($input_comment)->save();
         return redirect('/comments');
     }
