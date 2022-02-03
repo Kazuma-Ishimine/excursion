@@ -61,7 +61,7 @@
                                     <!--ログアウト-->
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
-                                                     logout_check(this);" id='logout_dialog' >
+                                                     " id='logout-dialog' >
                                         {{ __('Logout') }}
                                     </a>
 

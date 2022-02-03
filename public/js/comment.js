@@ -81,28 +81,28 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/logout.js":
-/*!********************************!*\
-  !*** ./resources/js/logout.js ***!
-  \********************************/
+/***/ "./resources/js/comment.js":
+/*!*********************************!*\
+  !*** ./resources/js/comment.js ***!
+  \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
 // 削除ボタンを定数に格納
-var logout_dialog = document.getElementById('logout-dialog'); // 削除ボタンをクリックしたときのイベントを設定
+var delete_button = document.getElementById('delete-button'); // 削除ボタンをクリックしたときのイベントを設定
 
-logout_dialog.addEventListener('click', function () {
+delete_button.addEventListener('click', function () {
   // ダイアログボックスの表示
-  var dialog_bool = window.confirm('本当にログアウトしますか?');
+  var dialog_bool = window.confirm('削除すると復元できません。\n本当に削除しますか?');
 
   if (dialog_bool === true) {
-    // OKを選択したとき、ログアウトする
-    document.getElementById('logout-form').submit();
+    // OKを選択したとき、ブログ投稿編集画面のURLでDELETEリクエストを実行
+    document.getElementById('form_delete').submit();
   } else {
     // キャンセルを選択した場合、何も行われない
     return false;
@@ -111,14 +111,14 @@ logout_dialog.addEventListener('click', function () {
 
 /***/ }),
 
-/***/ 2:
-/*!**************************************!*\
-  !*** multi ./resources/js/logout.js ***!
-  \**************************************/
+/***/ 3:
+/*!***************************************!*\
+  !*** multi ./resources/js/comment.js ***!
+  \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/ec2-user/environment/excursion/resources/js/logout.js */"./resources/js/logout.js");
+module.exports = __webpack_require__(/*! /home/ec2-user/environment/excursion/resources/js/comment.js */"./resources/js/comment.js");
 
 
 /***/ })

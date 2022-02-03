@@ -25,8 +25,7 @@ class CommentRequest extends FormRequest
     {
         return [
             // 内容のバリデーションルール
-            'post.body' => 'required | max:4000',
-            'post.review' => ['required', 'max:1000']
+            'comment.body' => 'required | max:4000',
         ];
     }
 }

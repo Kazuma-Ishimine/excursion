@@ -29,7 +29,6 @@ Route::group(['middleware' => 'auth'], function(){
     # Comments
     // サービス毎の意見投稿一覧の表示
     Route::get('/comments', 'CommentController@index');
-    
     // 意見投稿作成
     Route::get('/comments/create', 'CommentController@create');
     // 意見投稿保存

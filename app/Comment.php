@@ -16,6 +16,7 @@ class Comment extends Model
     protected $fillable =[
         'body',
         'user_id',
+        'service_id',
     ];
         
     // 意見投稿一覧画面(paginateで件数制限)

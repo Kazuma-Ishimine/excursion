@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Comment; // Comment
 use App\Service; // Service
+use App\Http\Requests\CommentRequest; // CommentRequest
 
 class CommentController extends Controller
 {
@@ -54,28 +55,28 @@ class CommentController extends Controller
         $input = $request['comment'];
         $input += ['user_id' => $request->user()->id];
         $comment->fill($input)->save();
-        return redirect('/comments');
+        return redirect('/comments/create');
     }
     
     // editメソッド(意見投稿編集)
     public function edit(Comment $comment)
     {
-        return view('comments/edit')->with(['comments'=> $comment] );
+        return view('comments/edit')->with(['comment'=> $comment]);
     }
     
     // updateメソッド(意見投稿編集保存)
     public function update(CommentRequest $request, Comment $comment)
     {
-        $inupt_comment = $request['post'];
+        $input_comment = $request['comment'];
         $input_comment += ['user_id' => $request->user()->id];
         $comment->fill($input_comment)->save();
-        return redirect('/comments');
+        return redirect('/comments/create');
     }
     
     // deleteメソッド(意見投稿削除)
     public function delete(Comment $comment)
     {
         $comment->delete();
-        return redirect('/comments');
+        return redirect('/comments/create');
     }
 }
