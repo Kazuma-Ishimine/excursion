@@ -52,7 +52,7 @@ class CommentController extends Controller
     public function store(CommentRequest $request, Comment $comment)
     {
         $input = $request['comment'];
-        $input += ['user_id' => $request->user()->id, 'service_id' => $request->service()->id];
+        $input += ['user_id' => $request->user()->id];
         $comment->fill($input)->save();
         return redirect('/comments');
     }
@@ -67,7 +67,7 @@ class CommentController extends Controller
     public function update(CommentRequest $request, Comment $comment)
     {
         $inupt_comment = $request['post'];
-        $input_comment += ['user_id' => $request->user()->id, 'service_id' => $request->service()->id];
+        $input_comment += ['user_id' => $request->user()->id];
         $comment->fill($input_comment)->save();
         return redirect('/comments');
     }

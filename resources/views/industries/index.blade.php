@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>業界</title>
+        <title>業界毎の企業一覧</title>
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
@@ -11,6 +11,7 @@
         
         <!--子ビュー固有のパーツ-->
         @section('content')
+        
             <div class="companies">
                 @foreach ($companies as $company)
                     <div class='company-content'>

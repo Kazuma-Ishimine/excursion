@@ -29,12 +29,12 @@
                 <div class='body'>
                     <h2>意見投稿内容</h2>
                     <!--内容入力用テキストエリア-->
-                    <textarea name='post[body]' placeholder='意見投稿'>{{ old('post.body') }}</textarea>
+                    <textarea name='comment[body]' placeholder='意見投稿'>{{ old('comment.body') }}</textarea>
                     <!--
                     入力エラー時、CommentRequestクラスで設定された
                     入力エラーメッセージを対象項目の下にそれぞれ表示
                     -->
-                    <p class='body-error' style='color:red'>{{ $errors->first('post.body') }}</p>
+                    <p class='body-error' style='color:red'>{{ $errors->first('comment.body') }}</p>
                 </div>
                 <!--入力内容を送信するボタン-->
                 <input type='submit' value='投稿' />
@@ -44,7 +44,5 @@
             <div class='reject'>[<a href='/comments'>辞める</a>]</div>
         @endsection
         
-        <!--JavaScriptファイル-->
-        <script type='text/javascript' src='{{ asset('js/comment.js') }}'></script>
     </body>
 </html>
