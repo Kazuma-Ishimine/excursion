@@ -49,7 +49,7 @@
                         
                         <!--プロフィール画像-->
                         @if($comment->user->image === null)
-                            <img src='https://s3-ap-northeast-1.amazonaws.com/myportfolioimage/***/no-image.png' width='100' height='100' />
+                            <img src='https://s3-ap-northeast-1.amazonaws.com/myportfolioimage/no-image.png' width='100' height='100' />
                         @else
                             <img src='{{ $comment->user->image }}' width='100' height='100' />
                         @endif
