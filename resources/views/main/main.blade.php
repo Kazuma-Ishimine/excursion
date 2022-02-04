@@ -75,7 +75,8 @@
             </div>
             
             <!--サービス毎の意見投稿欄へ-->
-            <div class='comment-index'>[<a href=''>意見投稿欄へ</a>]</div>
+            {{--<div class='comment-index'>[<a href='/comments/{{ $service->id }}'>意見投稿欄へ</a>]</div>--}}
+            
             
         @endsection
         

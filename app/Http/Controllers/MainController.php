@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-// モデルクラスのuse宣言
 use App\Service;
 
 class MainController extends Controller
@@ -12,7 +10,7 @@ class MainController extends Controller
     // indexメソッド(サービス毎の意見投稿欄)
     public function index(Service $service)
     {
-        return view('comments/index')->with(['comments' => $service->getByService()]);
+        return view('main/index')->with(['service' => $service]);
     }
     
     // main.blade.phpの表示

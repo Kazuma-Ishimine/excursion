@@ -28,6 +28,9 @@ Route::group(['middleware' => 'auth'], function(){
     
     # Comments
     // サービス毎の意見投稿一覧の表示
+    // Route::get('/comments/{service}', 'MainController@index');
+    
+    // 意見投稿一覧の表示
     Route::get('/comments', 'CommentController@index');
     // 意見投稿作成
     Route::get('/comments/create', 'CommentController@create');
@@ -50,9 +53,6 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/user/{user}/edit', 'UserController@edit');
     // プロフィール編集保存
     Route::put('/user/{user}', 'UserController@update');
-    
-    # Comments(無限スクロール)
-    Route::get('/comment', 'CommentController@index');
     
 });
     

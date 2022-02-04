@@ -39,6 +39,11 @@
                 {{ $services->links() }}
             </div>
             
+            <!--意見投稿一覧への遷移-->
+            <div class='comment-index'>
+                <a href='/comments/create'>[意見投稿一覧へ]</a>
+            </div>
+            
         @endsection
         
     </body>
