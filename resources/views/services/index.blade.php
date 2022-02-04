@@ -15,6 +15,7 @@
             
             <!--サービス一覧-->
             <div class="services">
+                <h1>サービス一覧</h1>
                 @foreach ($services as $service)
                     <div class='service'>
                         <!--企業について-->
