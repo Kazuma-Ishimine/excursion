@@ -1,8 +1,79 @@
-img{
-    width: 100px;
-    height: 100px;
+/*******************************************************
+                意見投稿欄
+*******************************************************/
+h2 {
+    text-align: center;
 }
 
+
+/*以下、①背景色など*/
+.comments {
+  padding: 20px 10px;
+  max-width: 450px;
+  margin: 15px auto;
+  text-align: right;
+  font-size: 14px;
+  background: #7da4cd;
+}
+
+
+/*以下、②左側のコメント*/
+.comment {
+  width: 100%;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.comment .profile-image {
+  float: left;
+  margin-right: -50px;
+  width: 40px;
+}
+
+.comment .profile-image img{
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+.comment .comment-content {
+  width: 100%;
+  text-align: left;
+}
+.content {
+  display: inline-block;
+  position: relative; 
+  margin: 0 0 0 50px;
+  padding: 10px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #edf1ee;
+}
+
+.content:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px; 
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #edf1ee;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+.content p {
+  margin: 0;
+  padding: 0;
+}
+
+
+/*******************************************************
+                画像
+*******************************************************/
+
+
+/********************************************************
+                いいね機能
+********************************************************/
 /*いいねマークにlikedクラスがついたときのスタイルを設定*/
 .liked {
     color: pink;

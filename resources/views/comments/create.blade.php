@@ -35,6 +35,17 @@
                     入力エラーメッセージを対象項目の下にそれぞれ表示
                     -->
                     <p class='body-error' style='color:red'>{{ $errors->first('comment.body') }}</p>
+                    
+                    <!--サービス選択-->
+                    <div class='service'>
+                        <h2>Service</h2>
+                        <select name='comment[service_id]'>
+                            @foreach ($services as $service)
+                                <option value='{{ $service->id}}'>{{ $service->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    
                 </div>
                 <!--入力内容を送信するボタン-->
                 <input type='submit' value='投稿' />
@@ -42,6 +53,7 @@
             
             <!--意見投稿を辞める-->
             <div class='reject'>[<a href='/comments'>辞める</a>]</div>
+            
         @endsection
         
     </body>

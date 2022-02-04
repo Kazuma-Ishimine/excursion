@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Comment;
 
 class Service extends Model
 {
@@ -22,7 +23,8 @@ class Service extends Model
     // サービスごとの意見投稿を取得
     public function getByService()
     {
-        return $this->comments()->with('comments')->orderBy('updated_at', 'DESC')->get();
+        dd($id);
+        return $this::with('comments')->comments()->orderBy('updated_at', 'DESC')->get();
     }
     
     // Companyに対するリレーション

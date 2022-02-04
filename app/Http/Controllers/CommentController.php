@@ -12,7 +12,7 @@ class CommentController extends Controller
     // indexメソッド(意見投稿一覧の表示)
     public function index(Request $request)
     {
-        $comment = Comment::withCount('likes')->orderBy('id', 'desc')->get();
+        $comment = Comment::withCount('likes')->with(['user', 'service'])->orderBy('updated_at', 'DESC')->get();
         $param = [
             'comments' => $comment,    
         ];
@@ -44,9 +44,9 @@ class CommentController extends Controller
     }
     
     // createメソッド(意見投稿作成)
-    public function create()
+    public function create(Service $service)
     {
-        return view('comments/create');
+        return view('comments/create')->with(['services' => $service->get()]);
     }
     
     // storeメソッド(意見投稿保存)

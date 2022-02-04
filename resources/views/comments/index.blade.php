@@ -15,45 +15,57 @@
         <!--子ビュー固有のパーツ-->
         @section('content')
             <!--投稿件数を表示-->
-            <h2>投稿件数</h2>
-            <div class='comment-number'>全{{ $comments->count() }}件</div>
+            <h2>投稿件数は、全 {{ $comments->count() }} 件</h2>
+
             <!--意見投稿一覧を表示-->
                 <h2>意見投稿</h2>
                 <div class='comments'>
                     @foreach ($comments as $comment)
                     
-                        <!--投稿内容-->
                         <div class='comment'>
-                            <p class='body'>{{ $comment->body }}(本文)</p>
-                            <p class='update-day'>{{ $comment->updated_at }}(更新日)</p>
-                            {{ $comment->service->id }}
+                            
+                            <div class='profile'>
+                                <!--プロフィール画像-->
+                                @if($comment->user->image === null)
+                                    <img src='https://s3-ap-northeast-1.amazonaws.com/myportfolioimage/no-image.png' />
+                                @else
+                                    <img src='{{ $comment->user->image }}' />
+                                @endif
+                            
+                                <!--ユーザー名-->
+                                <div class='user-name'>{{ $comment->user->name }}</div>
+                            </div>
+                            
+                            <div class='comment-content'>
+                                <!--投稿内容-->
+                                <div class='content'>
+                                    <p class='body'>{{ $comment->body }}(本文)</p>
+                                    <p class='update-day'>{{ $comment->updated_at }}(更新日)</p>
+                                    {{ $comment->service->name }}
+                                </div>
+                                <!--いいね機能-->
+                                @if (!$comment->isLikedBy(Auth::user()))
+                                    <!--いいねを取り消す-->
+                                    <span class='likes'>
+                                        <i class='fas fa-music like-toggle' data-comment-id='{{ $comment->id }}'></i>
+                                        <span class='like-counter'>{{ $comment->likes_count }}</span>
+                                    </span>
+                                @else
+                                    <!--いいねをつける-->
+                                    <span class='likes'>
+                                        <i class='fas fa-music heart like-toggle liked' data-comment-id='{{ $comment->id }}'></i>
+                                        <span class='like-counter'>{{ $comment->likes_count }}</span>
+                                    </span>
+                                @endif
+                                
+                                <!--意見投稿の編集画面へ-->
+                                <div class='edit'>[<a href='/comments/{{ $comment->id }}/edit' target='_top'>編集</a>]</div>
+                                
+                                <!--意見投稿削除画面へ-->
+                                <div class='delete'>[<a href='/comments/{{ $comment->id }}/edit' target='_top'>削除</a>]</div>
+                            </div>
+                            
                         </div>
-                        
-                        <!--いいね機能-->
-                        @if (!$comment->isLikedBy(Auth::user()))
-                            <!--いいねを取り消す-->
-                            <span class='likes'>
-                                <i class='fas fa-music like-toggle' data-comment-id='{{ $comment->id }}'></i>
-                                <span class='like-counter'>{{ $comment->likes_count }}</span>
-                            </span>
-                        @else
-                            <!--いいねをつける-->
-                            <span class='likes'>
-                                <i class='fas fa-music heart like-toggle liked' data-comment-id='{{ $comment->id }}'></i>
-                                <span class='like-counter'>{{ $comment->likes_count }}</span>
-                            </span>
-                        @endif
-                        
-                        <!--ユーザー名-->
-                        <div class='user-name'>{{ $comment->user->name }}</div>
-                        
-                        <!--プロフィール画像-->
-                        @if($comment->user->image === null)
-                            <img src='https://s3-ap-northeast-1.amazonaws.com/myportfolioimage/no-image.png' width='100' height='100' />
-                        @else
-                            <img src='{{ $comment->user->image }}' width='100' height='100' />
-                        @endif
-                        
                     @endforeach
                 </div>
         @endsection

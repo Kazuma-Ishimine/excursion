@@ -12,7 +12,7 @@ class MainController extends Controller
     // indexメソッド(サービス毎の意見投稿欄)
     public function index(Service $service)
     {
-        return view('main/index')->with(['comments' => $service->getByService()]);
+        return view('comments/index')->with(['comments' => $service->getByService()]);
     }
     
     // main.blade.phpの表示

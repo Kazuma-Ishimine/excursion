@@ -1,0 +1,36 @@
+/******************************************************
+                中央揃え
+******************************************************/
+h1,h3,div {
+    text-align: center;
+}
+
+/*****************************************************
+                ユーザー情報
+*****************************************************/
+.user-information {
+    border: 5px solid black;
+    background-color: green;
+    margin: 5% 20%;
+}
+/*タイトル*/
+.user-information > h1 {
+    /*囲み*/
+    border: 5px solid black;
+    /*余白*/
+    margin: 2% 35%;
+}
+
+/*小タイトル*/
+.user-information > h3 {
+    /*囲み*/
+    border: 2px solid black;
+    /*余白*/
+    margin: 2% 35%;
+}
+
+/*画像*/
+.profile-img > img {
+    width: 20%;
+}
+

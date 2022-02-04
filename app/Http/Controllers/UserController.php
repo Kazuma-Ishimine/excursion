@@ -28,7 +28,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         // 情報を取得
-        $input = $request['post'];
+        $input = $request['user'];
         // 画像をs3に保存
         if ($request->file('image')) {
             // プロフィール画像をprofile_imageとする

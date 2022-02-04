@@ -6,7 +6,9 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
-        <h1>仕事で遊ぶ</h1>
+        
+        <!--意見投稿一覧-->
+        <iframe width='1000' height='500' src='/comments' ></iframe>
         
         <!--編集フォーム-->
         <div class='comments'>
@@ -37,8 +39,8 @@
             <p id='delete-button'>投稿削除</p>
         </form>
         
-        <!--意見投稿の編集を辞める-->
-        <div class='reject'>[<a href='/comments'>辞める</a>]</div>
+        <!--意見投稿の編集と削除を辞める-->
+        <div class='reject'>[<a href='/comments/create'>辞める</a>]</div>
         
         <!--JavaScriptの記述-->
         <script type='text/javascript' src='{{ asset('js/comment.js') }}'></script>
