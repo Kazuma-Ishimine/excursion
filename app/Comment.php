@@ -5,7 +5,6 @@ namespace App;
 # use宣言
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes; // SoftDeletes
-use Auth; // Auth
 
 class Comment extends Model
 {
@@ -15,8 +14,8 @@ class Comment extends Model
     # $fillableプロパティ
     protected $fillable =[
         'body',
-        'user_id',
         'service_id',
+        'user_id',
     ];
         
     // Userに対するリレーション

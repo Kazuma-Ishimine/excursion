@@ -12,11 +12,17 @@ class CommentController extends Controller
     // indexメソッド(意見投稿一覧の表示)
     public function index(Request $request)
     {
-        $comment = Comment::withCount('likes')->orderBy('updated_at', 'DESC')->get();
+        $comment = Comment::withCount('likes')->with(['service', 'user'])->orderBy('updated_at', 'DESC')->get();
         $param = [
             'comments' => $comment,    
         ];
         return view('comments/index', $param);
+    }
+    
+    // showメソッド
+    public function show(Comment $comment) 
+    {
+        return view('comments/show')->with(['comment' => $comment]);
     }
     
     // likeメソッド

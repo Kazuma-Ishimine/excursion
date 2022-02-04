@@ -36,12 +36,15 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/comments/create', 'CommentController@create');
     // 意見投稿保存
     Route::post('/comments', 'CommentController@store');
+    // 意見投稿詳細
+    Route::get('/comments/{comment}', 'CommentController@show');
     // 意見投稿編集
     Route::get('/comments/{comment}/edit', 'CommentController@edit');
     // 意見投稿編集保存
-    Route::put('/comments', 'CommentController@update');
+    Route::put('/comments/{comment}', 'CommentController@update');
     // 意見投稿削除
-    Route::delete('/comments', 'CommentController@delete');
+    Route::delete('/comments/{comment}', 'CommentController@delete');
+   
     
     # Likes
     // いいね

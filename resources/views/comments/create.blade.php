@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <!--後で調べる-->
         <meta name='csrf-token' content='{{ csrf_token() }}'>
-        <title>意見投稿一覧と作成(仮)</title>
+        <title>意見投稿一覧と作成</title>
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link rel='stylesheet' href='{{ asset('css/comment.css') }}'>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
@@ -41,7 +41,7 @@
                         <h2>Service</h2>
                         <select name='comment[service_id]'>
                             @foreach ($services as $service)
-                                <option value='{{ $service->id}}'>{{ $service->name }}</option>
+                                <option value='{{ $service->id}}'>{{ $service->name }}(サービス名)</option>
                             @endforeach
                         </select>
                     </div>
