@@ -22,13 +22,13 @@ class GoogleLoginController extends Controller
     {
         // Googleからユーザー情報を取得、ステートレスな認証
         $google_user = Socialite::driver('google')->stateless()->user();
-        dd($google_user);
         // emailが合致するユーザーの取得
         $user = User::where('email', $google_user->email)->first();
         // 見つからない時に、新しくユーザーを作成
         if ($user === null) {
             $user = $this->createUserByGoogle($google_user);
         }
+        dd($google_user);
         // ログイン処理
         \Auth::login($user, true);
         return redirect('/services');

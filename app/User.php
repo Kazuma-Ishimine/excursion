@@ -48,4 +48,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Like');
     }
+    
+    // IdentityProviderに対するリレーション
+    public function IdentityProviders()
+    {
+        return $this->hasMany('App\IdentityProvider');
+    }
 }

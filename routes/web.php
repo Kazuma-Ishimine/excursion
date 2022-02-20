@@ -56,7 +56,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/user/{user}/edit', 'UserController@edit');
     // プロフィール編集保存
     Route::put('/user/{user}', 'UserController@update');
-    
+
 });
     
 # Users
@@ -71,8 +71,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('login/google', 'GoogleLoginController@redirectToGoogle');
 // Googleからユーザー情報を取得
 Route::get('login/google/callback', 'GoogleLoginController@handleGoogleCallback');
-
-
-
 
 
