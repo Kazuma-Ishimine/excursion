@@ -71,8 +71,6 @@ class LoginController extends Controller
             'provider_name' => $provider
         ])->first();
         
-        dd($user);
-        
         // ユーザー情報の新規作成
         if (!$user) {
             $user = User::create([
