@@ -81,6 +81,8 @@ class LoginController extends Controller
             ]);
         }
         
+        dd($user);
+        
         // 認証処理
         auth()->login($user, true);
         
