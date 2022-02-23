@@ -65,13 +65,13 @@ class LoginController extends Controller
             return redirect('/login');
         }
         
-        dd($social_user->getId());
-        
         // ユーザー情報の検索
         $user = User::where([
             'provider_id' => $social_user->getId(),
             'provider_name' => $provider
         ])->first();
+        
+        dd($user);
         
         // ユーザー情報の新規作成
         if (!$user) {
