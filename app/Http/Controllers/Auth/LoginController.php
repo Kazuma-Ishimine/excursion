@@ -8,7 +8,6 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;  // Auth
 use Socialite;  // Socialite
 use App\User;  // User
-use App\IdentityProvider;  // IdentityProvider
 
 class LoginController extends Controller
 {
@@ -65,6 +64,8 @@ class LoginController extends Controller
         } catch (\Exception $exception) {
             return redirect('/login');
         }
+        
+        dd($social_user);
         
         // ユーザー情報の検索
         $user = User::where([
