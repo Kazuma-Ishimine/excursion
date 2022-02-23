@@ -65,12 +65,10 @@ class LoginController extends Controller
             return redirect('/login');
         }
         
-        dd($social_user);
-        
         // ユーザー情報の検索
         $user = User::where([
             'provider_id' => $social_user->getId(),
-            'provider_name' => $provider,
+            'provider_name' => $provider
         ])->first();
         
         // ユーザー情報の新規作成
@@ -79,7 +77,7 @@ class LoginController extends Controller
                 'name' => $social_user->getNickname(),
                 'email' => $social_user->getEmail(),
                 'provider_id' => $social_user->getId(),
-                'provider_name' => $provider,    
+                'provider_name' => $provider   
             ]);
         }
         
