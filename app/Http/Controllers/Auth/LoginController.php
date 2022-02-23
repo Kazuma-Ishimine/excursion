@@ -65,7 +65,7 @@ class LoginController extends Controller
             return redirect('/login');
         }
         
-        $auth_user = $this->firstOrCreateUser($user, $provider);
+        $auth_user = $this->findOrCreateUser($user, $provider);
         
         // 認証処理
         Auth:login($auth_user, true);
