@@ -11,6 +11,14 @@
 |
 */
 
+# SNSログイン機能
+// ユーザーをリダイレクト
+Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider')
+    ->where('provider', 'google');
+// ユーザー情報を取得
+Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback')
+    ->where('provider', 'google');
+    
 Route::group(['middleware' => 'auth'], function(){
     # Services
     // サービス一覧の表示
@@ -65,11 +73,4 @@ Auth::routes();
 
 // ログインページ
 Route::get('/home', 'HomeController@index')->name('home');
-
-# Googleログイン機能
-// Google認証ページへユーザーをリダイレクト
-Route::get('login/google', 'GoogleLoginController@redirectToGoogle');
-// Googleからユーザー情報を取得
-Route::get('login/google/callback', 'GoogleLoginController@handleGoogleCallback');
-
 

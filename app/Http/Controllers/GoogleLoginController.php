@@ -28,7 +28,7 @@ class GoogleLoginController extends Controller
         if ($user === null) {
             $user = $this->createUserByGoogle($google_user);
         }
-        dd($google_user);
+        
         // ログイン処理
         \Auth::login($user, true);
         return redirect('/services');

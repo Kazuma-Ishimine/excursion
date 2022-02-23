@@ -42,52 +42,26 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
     
-    // ユーザーをOAuthプロバイダにリダイレクトする
-    public function redirectToProvider($social)
+    /**
+     * Redirect the user to the Google authentication page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function redirectToProvider($provider)
     {
-        return Socialite::driver($social)->redirect();
+        return Socialite::driver($provider)->redirect();
     }
-    
-    // 認証後にプロバイダからのコールバックを受け取る
+ 
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function handleProviderCallback($provider)
     {
-        try {
-            $user = Socialite::driver($provider)->user();
-        } catch (Exception $e) {
-            return redirect('/login');
-        }
-        
-        $auth_user = $this->findOrCreateUser($user, $provider);
-        Auth::login($auth_user, true);
-        return redirect($this->redirectTo);
-    }
-    
-    // ユーザーを探す
-    public function findOrCreateUser($provider_user, $provider)
-    {
-        $account = IdentityProvider::whereProviderName($provider)
-                    ->whereProviderId($provider_user->getId())
-                    ->first();
-        if ($account) {
-            return $account->user;
-        } else {
-            $user = User::whereEmail($provider_user->getEmail())->first();
-            
-            if (!$user) {
-                $user = User::create([
-                   'email' => $provider_user->getEmail(),
-                   'name' => $provider_user->getName(),
-                
-                ]);
-            }
-            
-            $user->IdentityProviders()->create([
-                'provider_id' => $provider_user->getId(),
-                'provider_name' => $provider,
-            ]);
-            
-            return $user;
-        }
+        $user = Socialite::driver($provider)->user();
+        dd($user);
+        // $user->token;
     }
     
     // ログアウト後の画面遷移
