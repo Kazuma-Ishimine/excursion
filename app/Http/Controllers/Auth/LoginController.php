@@ -65,6 +65,8 @@ class LoginController extends Controller
             return redirect('/login');
         }
         
+        dd($social_user->getId());
+        
         // ユーザー情報の検索
         $user = User::where([
             'provider_id' => $social_user->getId(),
@@ -80,8 +82,6 @@ class LoginController extends Controller
                 'provider_name' => $provider   
             ]);
         }
-        
-        dd($user);
         
         // 認証処理
         auth()->login($user, true);
