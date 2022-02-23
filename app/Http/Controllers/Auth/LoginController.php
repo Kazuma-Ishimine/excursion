@@ -59,9 +59,35 @@ class LoginController extends Controller
      */
     public function handleProviderCallback($provider)
     {
-        $user = Socialite::driver($provider)->user();
-        dd($user);
-        // $user->token;
+        // ログイン成功の判断
+        try {
+            $social_user = Socialite::driver($provider)->user();
+        } catch (\Exception $exception) {
+            return redirect('/login');
+        }
+        
+        // ユーザー情報の検索
+        $user = User::where([
+            'provider_id' => $social_user->getId(),
+            'provider_name' => $provider,
+        ])->first();
+        
+        // ユーザー情報の新規作成
+        if (!$user) {
+            $user = User::create([
+                'name' => $social_user->getNickname(),
+                'email' => $social_user->getEmail(),
+                'provider_id' => $social_user->getId(),
+                'provider_name' => $provider,    
+            ]);
+        }
+        
+        // 認証処理
+        auth()->login($user, true);
+        
+        // トップページへリダイレクト
+        return redirect()->to($this->redirectTo);
+        
     }
     
     // ログアウト後の画面遷移
