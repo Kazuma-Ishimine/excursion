@@ -60,34 +60,34 @@ class LoginController extends Controller
     {
         // ログイン成功の判断
         try {
-            $social_user = Socialite::driver($provider)->user();
-        } catch (\Exception $exception) {
+            $user = Socialite::driver($provider)->stateless()->user();
+        } catch (Exception $exception) {
             return redirect('/login');
         }
         
-        // ユーザー情報の検索
-        $user = User::where([
-            'provider_id' => $social_user->getId(),
-            'provider_name' => $provider
-        ])->first();
-        
-        // ユーザー情報の新規作成
-        if (!$user) {
-            $user = User::create([
-                'name' => $social_user->getNickname(),
-                'email' => $social_user->getEmail(),
-                'provider_id' => $social_user->getId(),
-                'provider_name' => $provider   
-            ]);
-        }
+        $auth_user = $this->firstOrCreateUser($user, $provider);
         
         // 認証処理
-        auth()->login($user, true);
+        Auth:login($auth_user, true);
         
         // トップページへリダイレクト
         return redirect()->to($this->redirectTo);
         
     }
+    
+    public function findOrCreateUser($user, $provider)
+     {
+        $auth_user = User::where('provider_id', $user->id)->first();
+        if ($auth_user) {
+            return $auth_user;
+        }
+        return User::create([
+            'name' => $user->name,
+            'email' => $user->email,
+            'provider_name' => strtouppter($provider),
+            'provider_id' => $user->id
+        ]);
+     }
     
     // ログアウト後の画面遷移
     protected function loggedOut()
