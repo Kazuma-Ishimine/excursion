@@ -11,10 +11,13 @@
         "php": "^7.2.5|~8.0.0",
         "doctrine/dbal": "^2.6",
         "fideloper/proxy": "^4.4",
+        "google/cloud": "^0.175.0",
+        "googleads/googleads-php-lib": "^10.1",
         "laravel/framework": "^6.20.26",
         "laravel/socialite": "^5.3",
         "laravel/tinker": "^2.5",
-        "league/flysystem-aws-s3-v3": "~1.0"
+        "league/flysystem-aws-s3-v3": "~1.0",
+        "sjk4/ngrok": "^2.3"
     },
     "require-dev": {
         "facade/ignition": "^1.16.15",

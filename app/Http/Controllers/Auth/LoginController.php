@@ -84,6 +84,7 @@ class LoginController extends Controller
         return User::create([
             'name' => $user->name,
             'email' => $user->email,
+            'password' => \Hash::make(uniqid()),
             'provider_name' => strtouppter($provider),
             'provider_id' => $user->id
         ]);
