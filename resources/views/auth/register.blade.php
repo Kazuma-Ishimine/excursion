@@ -60,23 +60,31 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
                         
-                        <!--Googleアカウントで登録-->
+                        <!--Google reCAPTCHA-->
+                        <form action="?" method="POST">
+                          <div class="g-recaptcha" data-sitekey="6Lfe_J0eAAAAADii5cMolMBmSmIRSUvD5hUxApCT"></div>
+                          <br/>
+
+                            <!--Register-->
+                            <div class="form-group row mb-0">
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('Register') }}
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                            
+                        <!--Register with Google-->
                         <div class='form-group row mt-2'>
                             <div class='col-md-8 offset-md-4'>
                                 <a href='/login/google' class='btn btn-secondary' role='button'>
-                                    Googleアカウントで登録
+                                    Register with Google
                                 </a>
                             </div>
                         </div>
+                        
                     </form>
                 </div>
             </div>
