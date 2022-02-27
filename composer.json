@@ -19,11 +19,11 @@
         "laravel/socialite": "^5.3",
         "laravel/tinker": "^2.5",
         "league/flysystem-aws-s3-v3": "~1.0",
-        "sjk4/ngrok": "^2.3"
+        "sjk4/ngrok": "^2.3",
+        "fakerphp/faker": "^1.9.1"
     },
     "require-dev": {
         "facade/ignition": "^1.16.15",
-        "fakerphp/faker": "^1.9.1",
         "laravel/ui": "^1.0",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
