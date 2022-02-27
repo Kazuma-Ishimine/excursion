@@ -41,9 +41,6 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
     
-    # reCAPTCHA
-    
-    
     # SNSログイン
     /**
      * Redirect the user to the Provider authentication page.

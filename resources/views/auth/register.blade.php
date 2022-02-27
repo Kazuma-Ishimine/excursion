@@ -61,9 +61,6 @@
                             </div>
                         </div>
                         
-                        <!--Google reCAPTCHA-->
-                        
-
                         <!--Register-->
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
