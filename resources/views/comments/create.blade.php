@@ -52,7 +52,7 @@
             </form>
             
             <!--意見投稿を辞める-->
-            <div class='reject'>[<a href='/comments'>辞める</a>]</div>
+            <div class='reject'>[<a href='/services'>辞める</a>]</div>
             
         @endsection
         
