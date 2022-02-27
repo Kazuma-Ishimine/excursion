@@ -13,18 +13,6 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!--ログアウト-->
     <script src="{{ asset('js/logout.js') }}" defer></script>
-    <!--Google reCAPTCHA-->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    
-    <script type="text/javascript">
-      var onloadCallback = function() {
-        alert("grecaptcha is ready!");
-      };
-    </script>
-    
-    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-        async defer>
-    </script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

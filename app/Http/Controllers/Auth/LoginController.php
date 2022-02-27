@@ -41,8 +41,12 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
     
+    # reCAPTCHA
+    
+    
+    # SNSログイン
     /**
-     * Redirect the user to the Google authentication page.
+     * Redirect the user to the Provider authentication page.
      *
      * @return \Illuminate\Http\Response
      */
@@ -52,7 +56,7 @@ class LoginController extends Controller
     }
  
     /**
-     * Obtain the user information from GitHub.
+     * Obtain the user information from Provider.
      *
      * @return \Illuminate\Http\Response
      */
@@ -68,7 +72,7 @@ class LoginController extends Controller
         $auth_user = $this->findOrCreateUser($user, $provider);
         
         // 認証処理
-        Auth:login($auth_user, true);
+        Auth::login($auth_user, true);
         
         // トップページへリダイレクト
         return redirect()->to($this->redirectTo);
@@ -76,7 +80,7 @@ class LoginController extends Controller
     }
     
     public function findOrCreateUser($user, $provider)
-     {
+    {
         $auth_user = User::where('provider_id', $user->id)->first();
         if ($auth_user) {
             return $auth_user;
@@ -85,10 +89,10 @@ class LoginController extends Controller
             'name' => $user->name,
             'email' => $user->email,
             'password' => \Hash::make(uniqid()),
-            'provider_name' => strtouppter($provider),
+            'provider_name' => $provider,
             'provider_id' => $user->id
         ]);
-     }
+    }
     
     // ログアウト後の画面遷移
     protected function loggedOut()

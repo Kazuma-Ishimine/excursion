@@ -9,6 +9,8 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5|~8.0.0",
+        "anhskohbo/no-captcha": "^3.4",
+        "arcanedev/no-captcha": "^2.1",
         "doctrine/dbal": "^2.6",
         "fideloper/proxy": "^4.4",
         "google/cloud": "^0.175.0",
