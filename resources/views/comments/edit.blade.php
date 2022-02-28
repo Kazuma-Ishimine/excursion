@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>意見投稿一覧と編集</title>
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link rel='stylesheet' href='{{ asset('css/commentupdate.css') }}'>
     </head>
     <body>
         @extends('layouts.app')
@@ -14,7 +15,8 @@
             <iframe width='1000' height='500' src='/comments' ></iframe>
             
             <!--編集フォーム-->
-            <div class='comments'>
+            <div class='comment'>
+                
                 <form action='/comments/{{ $comment->id }}' method='POST'>
                     @csrf
                     @method('PUT')
@@ -26,9 +28,11 @@
                         <!--入力エラー時、入力エラーメッセージを対象項目の下に表示-->
                         <p class='body-error' style='color:red'>{{ $errors->first('comment.body') }}</p>
                     </div>
+                    
                     <!--編集内容を保存-->
-                    <input type='submit' value='編集' />
+                    <div class='update-comment' ><input type='submit' value='編集' /></div>
                 </form>
+                
             </div>
             
             <!--削除領域-->
@@ -38,11 +42,11 @@
                 <!--deleteリクエスト-->
                 {{ method_field('delete') }}
                 <!--削除ボタン-->
-                <input type='submit' id='delete-button' onclick='event.preventDefault()' value='投稿削除' />
+                <div class='delete-comment' ><input type='submit' id='delete-button' onclick='event.preventDefault()' value='投稿削除' /></div>
             </form>
             
             <!--意見投稿の編集と削除を辞める-->
-            <div class='reject'>[<a href='/comments/create'>辞める</a>]</div>
+            <div class='reject-comment'>[<a href='/comments/create'>辞める</a>]</div>
             
         @endsection
         

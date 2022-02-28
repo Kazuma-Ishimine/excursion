@@ -1,0 +1,34 @@
+
+/*******************************************************
+        意見投稿作成欄と意見投稿編集・削除欄
+*******************************************************/
+
+/*見出し*/
+h2 {
+    /*中央揃え*/
+    text-align: center;
+}
+
+/*意見投稿一覧*/
+iframe {
+  /*インライン要素からブロック要素にする*/
+  display: block;
+  /*ブロック要素で、中央揃え*/
+  margin: 0 auto;
+}
+
+/*意見投稿作成、編集、削除欄*/
+.comment {
+    /*中央揃え*/
+  text-align: center;
+}
+
+/*作成、編集、削除ボタン*/
+.create-comment, .update-comment, .delete-comment {
+    text-align: center;
+}
+
+/*辞めるボタン*/
+.reject-comment {
+    text-align: center;
+}
