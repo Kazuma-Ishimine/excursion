@@ -38,16 +38,16 @@
                 <!--deleteリクエスト-->
                 {{ method_field('delete') }}
                 <!--削除ボタン-->
-                <input type='submit' style='display:none' />
-                <p id='delete-button'>投稿削除</p>
+                <input type='submit' id='delete-button' onclick='event.preventDefault()' value='投稿削除' />
             </form>
             
             <!--意見投稿の編集と削除を辞める-->
             <div class='reject'>[<a href='/comments/create'>辞める</a>]</div>
             
-            <!--JavaScriptの記述-->
-            <script type='text/javascript' src='{{ asset('js/comment.js') }}'></script>
-            
         @endsection
+        
+        <!--JavaScriptの記述-->
+        <script type='text/javascript' src='{{ asset('js/comment.js') }}'></script> 
+        
     </body>
 </html>
