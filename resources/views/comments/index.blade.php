@@ -39,8 +39,8 @@
                             <div class='comment-content'>
                                 <!--投稿内容-->
                                 <div class='content'>
-                                    <p class='body'>{{ $comment->body }}(本文)</p>
-                                    <p class='update-day'>{{ $comment->updated_at }}(更新日)</p>
+                                    <p class='body'>{{ $comment->body }}</p>
+                                    <p class='update-day'>{{ $comment->updated_at }}</p>
                                     {{ $comment->service->name }}
                                 </div>
                                 <!--いいね機能-->

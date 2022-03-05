@@ -42,7 +42,7 @@
                         <h2>Service</h2>
                         <select name='comment[service_id]'>
                             @foreach ($services as $service)
-                                <option value='{{ $service->id}}'>{{ $service->name }}(サービス名)</option>
+                                <option value='{{ $service->id}}'>{{ $service->name }}</option>
                             @endforeach
                         </select>
                     </div>

@@ -32,3 +32,9 @@ iframe {
 .reject-comment {
     text-align: center;
 }
+
+/*意見投稿内容入力*/
+textarea {
+    width: 50%;
+    height: 100px;
+}
