@@ -10962,3 +10962,15 @@ a.text-dark:focus {
   }
 }
 
+footer {
+  /*中央揃え*/
+  text-align: center;
+  /*高さ*/
+  height: 200px;
+  /*上下中央*/
+  line-height: 200px;
+  /*背景色*/
+  background-color: black;
+  /*文字の色*/
+  color: white;
+}

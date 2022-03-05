@@ -23,6 +23,7 @@
 </head>
 <body>
     <div id="app">
+        <!--共通部分のヘッダー-->
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/services') }}">
@@ -84,6 +85,11 @@
         <main class="py-4">
             @yield('content')
         </main>
+        
+        <!--共通部分のフッター-->
+        <footer>
+            @2022 KazumaIshimine
+        </footer>
     </div>
 </body>
 </html>
