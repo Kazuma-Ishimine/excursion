@@ -63,7 +63,7 @@
                         
                         <!--Register-->
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6 offset-md-6">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
@@ -73,11 +73,11 @@
                         
                         <hr/>
                         
-                        <h2 class='offset-md-4'>Register with SNS</h2>
+                        <h2 class='offset-md-5'>Register with SNS</h2>
                         
                         <!--Register with Google-->
                         <div class='form-group row mt-2'>
-                            <div class='col-md-8 offset-md-4'>
+                            <div class='col-md-8 offset-md-5'>
                                 <a href='/login/google' class='btn btn-secondary' role='button'>
                                     Register with Google
                                 </a>
