@@ -70,6 +70,11 @@
                             </div>
                         </div>
                             
+                        
+                        <hr/>
+                        
+                        <h2 class='offset-md-4'>Register with SNS</h2>
+                        
                         <!--Register with Google-->
                         <div class='form-group row mt-2'>
                             <div class='col-md-8 offset-md-4'>

@@ -47,13 +47,13 @@
                                 @if (!$comment->isLikedBy(Auth::user()))
                                     <!--いいねを取り消す-->
                                     <span class='likes'>
-                                        <i class='fas fa-music like-toggle' data-comment-id='{{ $comment->id }}'></i>
+                                        <i class='fas fa-grin-hearts fa-lg like-toggle' data-comment-id='{{ $comment->id }}'></i>
                                         <span class='like-counter'>{{ $comment->likes_count }}</span>
                                     </span>
                                 @else
                                     <!--いいねをつける-->
                                     <span class='likes'>
-                                        <i class='fas fa-music heart like-toggle liked' data-comment-id='{{ $comment->id }}'></i>
+                                        <i class='fas fa-grin-hearts fa-lg heart like-toggle liked' data-comment-id='{{ $comment->id }}'></i>
                                         <span class='like-counter'>{{ $comment->likes_count }}</span>
                                     </span>
                                 @endif
