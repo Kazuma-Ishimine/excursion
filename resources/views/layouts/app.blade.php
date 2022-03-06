@@ -88,7 +88,7 @@
         
         <!--共通部分のフッター-->
         <footer>
-            @2022 KazumaIshimine
+            ©2022 KazumaIshimine
         </footer>
     </div>
 </body>

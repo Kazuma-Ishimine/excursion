@@ -14,7 +14,7 @@ return [
     */
     
     // 記録されているパスワードとメールアドレスが一致しないときのエラー
-    'failed' => 'メールアドレスとパスワードが一致しません。',
+    'failed' => '入力項目が一致しません。',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];
