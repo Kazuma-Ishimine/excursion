@@ -1,6 +1,13 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+- サービ詳細画面
+![サービス詳細](https://user-images.githubusercontent.com/85773013/157035978-ee6ddc61-c2d7-4887-8996-efeee924605d.png)
 
 
+- ユーザー編集画面
+![ユーザー編集](https://user-images.githubusercontent.com/85773013/157036014-680f551b-53dc-4b55-8e17-88d087219aa3.png)
+
+
+- 意見投稿作成画面
+![意見投稿画面](https://user-images.githubusercontent.com/85773013/157036074-77119fa8-4a47-4c71-9dc6-8f88c243f991.png)
 ## アプリの概要
 
 **競合他社調査意見投稿サイト**
