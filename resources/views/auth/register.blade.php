@@ -73,13 +73,13 @@
                         
                         <hr/>
                         
-                        <h2 class='offset-md-5'>Register with SNS</h2>
+                        <h2 class='offset-md-4'>SNSアカウントで登録</h2>
                         
                         <!--Register with Google-->
                         <div class='form-group row mt-2'>
                             <div class='col-md-8 offset-md-5'>
-                                <a href='/login/google' class='btn btn-secondary' role='button'>
-                                    Register with Google
+                                <a href='/login/google' class='btn btn-danger .text-white' role='button'>
+                                    Googleアカウントで登録
                                 </a>
                             </div>
                         </div>

@@ -68,13 +68,13 @@
                         
                         <hr/>
                         
-                        <h2 class='offset-md-5'>Login with SNS</h2>
+                        <h2 class='offset-md-4'>SNSアカウントでログイン</h2>
                         
                         <!--Login with Google-->
                         <div class='form-group row mt-2'>
                             <div class='col-md-8 offset-md-5'>
-                                <a href ='/login/google' class='btn btn-secondary' role='button'>
-                                    Login with Google
+                                <a href ='/login/google' class='btn btn-danger .text-white' role='button'>
+                                    Googleアカウントでログイン
                                 </a>
                             </div>
                         </div>
